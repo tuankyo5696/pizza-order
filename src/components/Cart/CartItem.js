@@ -1,11 +1,13 @@
 import React, { useState} from 'react'
 import * as actions from './../../store/actions/index';
 import {connect} from 'react-redux'
+import { EMPTY_STRING } from '../../constants/helper';
 const CartItems = (
     props
 ) => {
     
-    let  [itemQuantity, setItemQuantity] = useState(props.quantity);
+    let [itemQuantity, setItemQuantity] = useState(props.quantity);
+    let subItem = props.category.name === "Pizzas" ? props.subName : EMPTY_STRING
     const removeItem = (e) => {
         e.preventDefault();
         props.dispatch(actions.removeToCart());
@@ -47,13 +49,19 @@ const CartItems = (
                                 onChange={handleQuantityChange} min="1" max="10" step="1" value={itemQuantity} className="cartprice qty-input total" />
                     <div className="btn-spin btn-inc" onClick = {incrementQuantity}>+</div>
                     </div>
-                  </div>
+                        </div>
+                        
                   <div className="price-count">
                     <span>x</span>
                     <span>{props.prices[0].price}</span>
                   </div>
                     </div>
                     </div>
+              
+                    <div className="option-group">
+                    <h4 className="product-name">{subItem.name}</h4>
+                    <div className="product-price">{subItem.price}</div>
+                </div>
                 <div className="btn-wrap">
                     <a href='/' className="btn-remove" onClick={removeItem} >
                                 Remove

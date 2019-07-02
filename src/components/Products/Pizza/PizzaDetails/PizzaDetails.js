@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./_PizzaDetails.scss";
 import { EMPTY_STRING } from "./../../../../constants/helper";
+import { connect } from 'react-redux';
+import * as actions from './../../../../store/actions/index';
 import * as Yup from "yup";
 import { Formik, Field, Form } from "formik";
 import {
@@ -11,7 +13,8 @@ import {
 class PizzaDetails extends Component {
   state = {
     totalPrice: 0,
-    purchase: false
+    purchase: false,
+    pizza: {}
   };
   handleChange = e => {
     this.setState({
@@ -19,7 +22,7 @@ class PizzaDetails extends Component {
     });
   };
   purchaseHandler = () => {
-    console.log("abc");
+    this.props.onAddCart(this.state.pizza)
   };
   render() {
     const choosePizzaSize = this.props.pizza.prices.map(price => (
@@ -64,20 +67,31 @@ class PizzaDetails extends Component {
           radioGroup2: Yup.string().required("Please choose crust!")
         })}
         onSubmit={(values, actions) => {
-          console.log(values);
           let totalPrice = 0;
+          let subName = EMPTY_STRING
           const sizePrice = JSON.parse(values.radioGroup);
           totalPrice = totalPrice + sizePrice.price;
+          const size =  sizePrice.size === "Medium - 9 inch"? '9"' : '12"'
           if (values.radioGroup3 !== EMPTY_STRING) {
             const topping = JSON.parse(values.radioGroup3);
-            totalPrice = totalPrice + topping.price;
+            subName = topping
           }
-          console.log(sizePrice.price);
           this.setState({
             totalPrice: totalPrice,
+            pizza: {
+              name: size + this.props.pizza.name,
+              subName: subName,
+              _id: this.props.pizza._id,
+              category: this.props.pizza.category,
+              picture: this.props.pizza.picture,
+              prices: [
+                {
+                  price: totalPrice
+                }
+              ]
+            },
             purchase: true
           });
-          console.log(this.state.totalPrice);
         }}
         render={({
           handleSubmit,
@@ -153,4 +167,14 @@ class PizzaDetails extends Component {
     );
   }
 }
-export default PizzaDetails;
+
+const mapStateToProps = state => {
+  return {
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddCart: (product) => dispatch(actions.addToCart(product))
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps) (PizzaDetails);

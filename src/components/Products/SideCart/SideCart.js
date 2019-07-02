@@ -43,16 +43,20 @@ const sidecart = props => (
 const mapStateToProps = state => {
   return {
     cartItems: state.shop.cart,
-  
     cartItemCount: state.shop.cart.reduce((count, curItem) => {
       return count + curItem.quantity;
     }, 0),
     totalPrice: state.shop.cart.reduce((count, curItem) => {
+      let total = count;
       if (curItem.category.name === "Pizzas") {
-          return console.log('Pizza')
+        total = total + curItem.prices[0].price * curItem.quantity + curItem.subName.price
       }
-      return count + curItem.prices[0].price * curItem.quantity;
-    }, 0)
+      else {
+        total = total + curItem.prices[0].price * curItem.quantity;
+      }
+      return total;
+    }, 0),
+   
   };
 };
 export default connect(mapStateToProps)(sidecart);
