@@ -37,7 +37,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onAddCart: (product) => dispatch(actions.addToCart(product)),
-    onIncrementCartQuantity: (_id) => dispatch(actions.incrementCartQuantity(_id))
   }
 }
 

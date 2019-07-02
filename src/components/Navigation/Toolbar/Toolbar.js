@@ -5,14 +5,17 @@ import Logo from "./../../Logo/Logo";
 import DrawerToggle from "./../SideDrawer/DrawerToggle/DrawerToggle";
 import NavigationCart from "./../NavigationCart/NavigationCart";
 import NavigationUser from "./../NavigationUser/NavigationUser";
+import {NavLink} from 'react-router-dom';
 const toolbar = props => (
   <header className="Toolbar">
     <div className="container">
       <div className="row">
         <div className="col-auto">
+          <NavLink to ={`/`}>
           <div className="Logo">
             <Logo />
           </div>
+          </NavLink>
         </div>
         <div className="col-auto ml-auto">
           <div className="menu-option-wrap">

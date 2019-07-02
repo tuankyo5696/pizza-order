@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./_PizzaDetails.scss";
 import { EMPTY_STRING } from "./../../../../constants/helper";
-import { connect } from 'react-redux';
-import * as actions from './../../../../store/actions/index';
+import { connect } from "react-redux";
+import * as actions from "./../../../../store/actions/index";
 import * as Yup from "yup";
 import { Formik, Field, Form } from "formik";
 import {
@@ -22,7 +22,7 @@ class PizzaDetails extends Component {
     });
   };
   purchaseHandler = () => {
-    this.props.onAddCart(this.state.pizza)
+    this.props.onAddCart(this.state.pizza);
   };
   render() {
     const choosePizzaSize = this.props.pizza.prices.map(price => (
@@ -68,13 +68,13 @@ class PizzaDetails extends Component {
         })}
         onSubmit={(values, actions) => {
           let totalPrice = 0;
-          let subName = EMPTY_STRING
+          let subName = EMPTY_STRING;
           const sizePrice = JSON.parse(values.radioGroup);
           totalPrice = totalPrice + sizePrice.price;
-          const size =  sizePrice.size === "Medium - 9 inch"? '9"' : '12"'
+          const size = sizePrice.size === "Medium - 9 inch" ? '9"' : '12"';
           if (values.radioGroup3 !== EMPTY_STRING) {
             const topping = JSON.parse(values.radioGroup3);
-            subName = topping
+            subName = topping;
           }
           this.setState({
             totalPrice: totalPrice,
@@ -169,12 +169,14 @@ class PizzaDetails extends Component {
 }
 
 const mapStateToProps = state => {
-  return {
-  }
-}
+  return {};
+};
 const mapDispatchToProps = dispatch => {
   return {
-    onAddCart: (product) => dispatch(actions.addToCart(product))
-  }
-}
-export default connect(mapStateToProps,mapDispatchToProps) (PizzaDetails);
+    onAddCart: product => dispatch(actions.addToCart(product))
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PizzaDetails);

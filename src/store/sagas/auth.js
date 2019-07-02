@@ -8,7 +8,7 @@ export function* logoutSaga(action) {
   yield call([localStorage, "removeItem"], "token");
   yield call([localStorage, "removeItem"], "expirationDate");
   yield call([localStorage, "removeItem"], "userId");
-  yield call([localStorage,"removeItem"], "auth");
+  yield call([localStorage, "removeItem"], "auth");
   yield put(actions.logoutSucceed());
 }
 
@@ -56,8 +56,8 @@ export function* authUserSaga(action) {
     yield localStorage.setItem("auth", JSON.stringify(response.data.userData));
     yield put(actions.authSuccess(idToken, response.data.userData.id));
   } catch (error) {
-    console.log(error)
-    yield put(actions.authFail(error.response.data.error));
+    console.log(error);
+    yield put(actions.authFail(error));
   }
 }
 export function* authCheckStateSaga(action, state) {

@@ -4,16 +4,15 @@ import { EMPTY_STRING } from "./../../../constants/helper";
 import * as Yup from "yup";
 import "./_Signin.scss";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter,Redirect } from "react-router-dom";
 import * as actions from "./../../../store/actions/index";
 
 class SignIn extends Component {
   submitHandler = account => {
-    if (account) {
       this.props.onAuth(account.email, account.password, !this.props.isSignup);
-      this.props.history.push("/");
     }
-  };
+   
+
   render() {
     const signInSchema = Yup.object().shape({
       email: Yup.string()
@@ -24,8 +23,19 @@ class SignIn extends Component {
         .max(50, "Too long")
         .required("Password is required")
     });
+    let errorMessage = EMPTY_STRING;
+    if ( this.props.error ) {
+      errorMessage = (
+          <p>{this.props.error.message}</p>
+      );
+  }
+    let authRedirect = EMPTY_STRING;
+    if(this.props.isAuthenticated){
+      authRedirect = <Redirect to={'/'} />
+    }
     return (
       <div>
+        {authRedirect}
         <Formik
           initialValues={{
             email: EMPTY_STRING,
@@ -105,6 +115,7 @@ class SignIn extends Component {
             </section>
           )}
         </Formik>
+        {errorMessage}
       </div>
     );
   }
