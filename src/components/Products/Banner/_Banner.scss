@@ -1,0 +1,32 @@
+@import './../../../styles/styles.scss';
+
+.Pyco-banner {
+    padding-top: 4.6rem;
+
+    .tns-outer {
+        position: relative;
+        background-image: url('./../../../assets/images/banner.jpg');
+        background-size: cover;
+        background-position: center center;
+        padding-top: 4rem;
+    }
+}
+
+
+@media (min-width: $breakpoint-md) {
+    .Pyco-banner {
+        padding-top: 7rem;
+
+        .tns-outer {
+            padding-top: 12rem;
+        }
+    }
+}
+
+@media(min-width: $breakpoint-lg) {
+    .Pyco-banner {
+        .tns-outer {
+            padding-top: 18rem;
+        }
+    }
+}

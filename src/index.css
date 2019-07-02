@@ -1,0 +1,60 @@
+.App {
+    text-align: center;
+  }
+  
+      .App-logo {
+          animation: App-logo-spin infinite 20s linear;
+          height: 80px;
+      }
+  
+      .App-header {
+          background-color: #222;
+          height: 150px;
+          padding: 20px;
+          color: white;
+      }
+  
+      .App-title {
+          font-size: 1.5em;
+      }
+  
+      .App-intro {
+          font-size: large; 
+      }
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  :root {
+    --fontSize: 1rem;
+    --mainColor: #12345678;
+    --secondaryColor: rgba(102, 51, 153, 0.9);
+}
+  html {
+    overflow-x: hidden;
+    overflow-y: auto;
+    overflow: hidden auto;
+}
+  @media (max-width: 50rem) {
+    body {
+        color: var(--mainColor);
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+        font-size: var(--fontSize);
+        line-height: calc(var(--fontSize) * 1.5);
+        overflow-wrap: break-word;
+        padding-inline: calc(var(--fontSize) / 2 + 1px);
+    }
+}
+  h1,h2,h3,h4,h5,h6 {
+    margin-block: 0;
+}
+  header.App-header, .App-header.main {
+
+    background-size: contain;
+}
+  a {
+    color: rebeccapurple
+}
+  a:hover {
+        color: color-mod(var(--secondaryColor) b(15%) a(75%));
+    }

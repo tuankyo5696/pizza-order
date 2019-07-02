@@ -1,0 +1,28 @@
+@import './../../../../styles/styles.scss';
+
+.NavigationItem {
+    margin: 10px 0;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+
+    >a {
+        color: $white;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 1.25rem;
+        font-style: italic;
+        padding: .85rem 0;
+        display: block;
+        text-decoration: none;
+        width: 100%;
+        box-sizing: border-box;
+        display: block;
+
+        &:hover,
+        &:active,
+        &.active {
+            color: $red;
+        }
+    }
+}

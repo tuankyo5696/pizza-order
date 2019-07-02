@@ -1,0 +1,45 @@
+@import './../../../../styles/styles.scss';
+
+.DrawerToggleContainer {
+    display: inline-block;
+    cursor: pointer;
+
+    >.bar {
+        width: 35px;
+        height: 5px;
+        background-color: $white;
+        margin: 6px 0;
+        transition: 0.5s;
+        border-radius: 5px;
+    }
+}
+
+@media(min-width: $breakpoint-md) {
+    .DrawerToggleContainer {
+        margin-top: 30px;
+        -webkit-box-ordinal-group: 5;
+        -ms-flex-order: 4;
+        order: 4;
+        width: 36px;
+        height: 36px
+    }
+}
+
+/* Rotate first bar */
+.change.bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+
+    transition-timing-function: cubic-bezier(.215, .61, .355, 1);
+}
+
+/* Fade out the second bar */
+.change.bar2 {
+    opacity: 0;
+}
+
+/* Rotate last bar */
+.change.bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+}

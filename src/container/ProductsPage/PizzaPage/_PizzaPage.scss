@@ -1,0 +1,188 @@
+@import './../../../styles/styles.scss';
+
+.Pyco-menu{
+    padding-top: 15px;
+    width: 100%;
+    .menu-content{
+        padding-top: 15px;
+    }   
+    .row {
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+
+        &.no-gutters {
+            margin-right: 0;
+            margin-left: 0;
+        }
+    .menu-header{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        border-bottom: 1px dotted $blue;
+        h2{
+            color: $blue;
+            margin-bottom: 12px;
+            font-size: 15px;
+            font-weight: 900;
+            text-transform: uppercase
+        }
+        ul{
+            list-style-type: none;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            padding-bottom: 8px;
+            li{
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                span{
+                    font-size: 12px;
+                    font-weight: 400;
+                    -webkit-box-flex: 0;
+                    -ms-flex: 0 0 auto;
+                    flex: 0 0 auto;
+                    width: auto;
+                    max-width: none;
+                    white-space: nowrap
+                }
+            }
+        }
+    }
+
+
+}
+}
+@media (min-width: $breakpoint-sm){
+    .Pyco-menu{
+        .row{
+            .menu-header{
+                h2{
+                    font-size: 1.40625rem;
+                }
+                ul{
+                    li{
+                        span{
+                            font-size: .84375rem;
+                            strong{
+                                font-size: 12px;
+                                font-weight: 900
+                            }
+                        }
+                    }
+                }
+            }
+        }
+       
+    }
+}
+@media (max-width:480px) {
+    .Pyco-menu .row .menu-header ul {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin: 0 -5px;
+        li{
+            margin-right: 28px;
+        }
+    }
+}
+@media (min-width : $breakpoint-lg){
+    .col-lg-8{
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 66.66667%;
+        flex: 0 0 66.66667%;
+        max-width: 66.66667%
+    }
+}
+
+@media(min-width: $breakpoint-xl){
+    .Pyco-menu{
+        .row{
+            .menu-header{
+                -webkit-box-orient: horizontal;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                flex-direction: row;
+                h2{
+                    font-size: 30px;
+                    margin-bottom: 0;
+                }
+                ul{
+                    padding-bottom: 0;
+                    position: relative;
+                    margin-left: 55px;
+                    &:before{
+                        content: '';
+                        position: absolute;
+                        width: 1px;
+                        height: 27px;
+                        background: $blue;
+                        left: -25px;
+                        top: 50%;
+                        -webkit-transform: translateY(-50%);
+                        -ms-transform: translateY(-50%);
+                        transform: translateY(-50%)                    ;
+                        -moz-transform: translateY(-50%);
+                        -o-transform: translateY(-50%);
+                    }
+                }
+            }
+        }
+       
+    }
+    .col-xl-9{
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 75%;
+        flex: 0 0 75%;
+        max-width: 75%
+    }
+}
+@media (min-width: $breakpoint-sm) {
+    .Pyco-menu .row .menu-header ul li {
+        margin-right: 28px;
+        span{
+            font-size: .84375rem
+        }
+    }
+
+}
+
+@media (min-width: $breakpoint-lg) {
+    .Pyco-menu .row  .menu-header ul li span {
+        white-space: nowrap
+    }
+}
+
+@media (min-width:$breakpoint-xl) {
+    .Pyco-menu .row  .menu-header ul li span {
+        font-size: 18px
+    }
+}
+
+
+@media (min-width: $breakpoint-sm) {
+    .Pyco-menu .row  .menu-header ul li span strong {
+        font-size: 1.125rem
+    }
+}
+
+@media (min-width:$breakpoint-lg) {
+    .Pyco-menu .row  .menu-header ul li span strong {
+        white-space: nowrap
+    }
+}
+
+@media (min-width: $breakpoint-lg) {
+    .Pyco-menu .row  .menu-header ul li span strong {
+        font-size: 18px
+    }
+}

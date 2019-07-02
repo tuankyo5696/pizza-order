@@ -1,0 +1,156 @@
+@import './../../../styles/styles.scss';
+
+.user {
+    display: none;
+}
+.account{
+    color: $white;
+    font-weight: 900;
+    font-size: .875rem;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:active {
+        color: $red;
+        text-decoration: none;
+        -webkit-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
+        -moz-transition: all .3s;
+        -ms-transition: all .3s;
+    }
+
+    &:hover {
+        color: $red;
+        text-decoration: none;
+        -webkit-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
+        -moz-transition: all .3s;
+        -ms-transition: all .3s;
+    }
+}
+@media (min-width: $breakpoint-md) {
+    .user {
+        margin-top: 30px;
+        -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-right: 1rem;
+
+        .sign-in {
+            list-style-type: none;
+            margin-left: .5rem;
+
+            li {
+                display: inline-block;
+
+                .link {
+                    color: $white;
+                    font-weight: 900;
+                    font-size: .875rem;
+                    text-transform: uppercase;
+                    text-decoration: none;
+
+                    &:active {
+                        color: $red;
+                        text-decoration: none;
+                        -webkit-transition: all .3s;
+                        -o-transition: all .3s;
+                        transition: all .3s;
+                        -moz-transition: all .3s;
+                        -ms-transition: all .3s;
+                    }
+
+                    &:hover {
+                        color: $red;
+                        text-decoration: none;
+                        -webkit-transition: all .3s;
+                        -o-transition: all .3s;
+                        transition: all .3s;
+                        -moz-transition: all .3s;
+                        -ms-transition: all .3s;
+                    }
+                }
+            }
+
+            li+li {
+                margin-left: .5rem;
+                position: relative;
+
+                &li+li:before {
+                    content: '/';
+                    margin-right: .5rem;
+                    font-weight: 900;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width : $breakpoint-md) {
+    .user {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        .sign-in {
+            list-style-type: none;
+            margin-left: .5rem;
+
+            li {
+                display: inline-block;
+
+                .link {
+                    color: $white;
+                    font-weight: 900;
+                    font-size: .875rem;
+                    text-transform: uppercase;
+                    text-decoration: none;
+
+                    &:active {
+                        color: $red;
+                        text-decoration: none;
+                        -webkit-transition: all .3s;
+                        -o-transition: all .3s;
+                        transition: all .3s;
+                        -moz-transition: all .3s;
+                        -ms-transition: all .3s;
+                    }
+
+                    &:hover {
+                        color: $red;
+                        text-decoration: none;
+                        -webkit-transition: all .3s;
+                        -o-transition: all .3s;
+                        transition: all .3s;
+                        -moz-transition: all .3s;
+                        -ms-transition: all .3s;
+                    }
+                }
+            }
+
+            li+li {
+                margin-left: .5rem;
+                position: relative;
+
+                &li+li:before {
+                    content: '/';
+                    margin-right: .5rem;
+                    font-weight: 900;
+                    color: $white;
+                }
+            }
+        }
+    }
+}

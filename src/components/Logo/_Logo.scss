@@ -1,0 +1,27 @@
+@import './../../styles/styles.scss';
+
+@media(max-width: $breakpoint-md - 0.02px) {
+    .LogoImg {
+        max-width: 50px;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: $breakpoint-md) and (min-width: $breakpoint-lg) {
+    .LogoImg {
+        max-width: 70px
+    }
+}
+
+@media(min-width: $breakpoint-md) {
+    .LogoImg {
+        max-width: 100px;
+
+        img {
+            width: 100%;
+        }
+    }
+}

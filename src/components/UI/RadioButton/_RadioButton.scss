@@ -1,0 +1,18 @@
+@import './../../../styles/styles.scss';
+
+.input-feedback {
+    color: $red;
+}
+
+.input-field {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+
+    legend {
+        font-size: 20px;
+        font-weight: 900;
+        color: $blue;
+        width: 100%;
+    }
+
+}

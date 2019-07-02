@@ -1,0 +1,226 @@
+@import './../../../styles/styles.scss';
+
+.Register {
+    padding: 10vh 0;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 123, 255, 0.09);
+
+    .coverSignUp {
+        padding: 2rem;
+
+        .container {
+            .row {
+                .col {
+                    .headtitle {
+                        font-weight: 900;
+                        font-size: 1.1rem;
+                        color: #04354c;
+                        text-transform: uppercase;
+                        text-align: center;
+                        margin-bottom: 1.2rem;
+                        font-family: 'K2D', sans-serif;
+                        font-weight: 800;
+                    }
+
+                    .form {
+                        max-width: 22rem;
+
+                        .form-horizontal {
+                            padding-top: 0.2rem;
+                            padding-bottom: 2rem;
+
+                            h3 {
+                                font-family: 'Archivo', sans-serif;
+                                font-size: 0.8rem;
+                            }
+
+                            .form-group {
+                                margin-bottom: .5rem;
+
+                                label {
+                                    font-weight: 900;
+                                    font-size: .65rem;
+                                    color: #04354c;
+                                    text-transform: uppercase;
+                                    font-family: 'K2D', sans-serif;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.divBtnSignUp {
+    .btnSignUp {
+        width: 100%;
+        border: none;
+        background-color: #149ed0;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        cursor: pointer;
+        color: white;
+        border-radius: 3px;
+        font-weight: 600;
+        font-family: 'Archivo', sans-serif;
+
+        .fa-chevron-right {
+            padding-left: 1rem;
+        }
+    }
+}
+
+.form-group select {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: .75rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #04354c;
+    border-radius: 3px;
+    height: 27.5px
+}
+
+.Invalid {
+    color: $red;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    -o-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out
+}
+
+
+.form-control::-ms-expand {
+    background-color: transparent;
+    border: 0
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #6c757d;
+    opacity: 1
+}
+
+.form-control::-ms-input-placeholder {
+    color: #6c757d;
+    opacity: 1
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 1
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #e9ecef;
+    opacity: 1
+}
+
+@media (min-width:$breakpoint-sm) {
+
+    // .forget-password p {
+    //     font-size: 1rem
+    // }
+    .form {
+        max-width: 33rem
+    }
+
+    .forget-password {
+        margin-top: .6rem
+    }
+
+    .col-sm-3 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%
+    }
+
+    .col-sm-9 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 75%;
+        flex: 0 0 75%;
+        max-width: 75%
+    }
+}
+
+@media (min-width:$breakpoint-md) {
+
+    .Register {
+        .coverSignUp {
+            padding: 2rem;
+
+            .container {
+                .row {
+                    .col {
+                        .headtitle {
+                            font-size: 1.8rem;
+                            padding-top: 4rem;
+                        }
+
+                        .form {
+                            .form-horizontal {
+                                h3 {
+                                    font-size: 1.2rem;
+                                }
+
+                                .form-group {
+                                    label {
+                                        font-size: 1rem;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .form-group {
+        margin-bottom: 1rem
+    }
+}
+
+
+@media (min-width:$breakpoint-lg) {
+
+    // .forget-password p {
+    //     font-size: 1rem
+    // }
+    .form {
+        max-width: 34rem
+    }
+}

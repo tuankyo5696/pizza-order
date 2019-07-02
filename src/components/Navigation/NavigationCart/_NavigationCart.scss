@@ -1,0 +1,44 @@
+@import './../../../styles/styles.scss';
+
+.cart {
+    margin-right: 1.5rem;
+    position: relative;
+    cursor: pointer;
+
+    .count {
+        position: absolute;
+        background: $red;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        font-size: .75rem;
+        color: $white;
+        top: 0;
+        left: 77%
+    }
+
+    span {
+        font-size: 1rem;
+        color: $white;
+        line-height: 2.125rem
+    }
+}
+
+@media(min-width : $breakpoint-md) {
+    .cart {
+        -webkit-box-ordinal-group: 4;
+
+        span {
+            margin-top: 30px;
+        }
+    }
+}
