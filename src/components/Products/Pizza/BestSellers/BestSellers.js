@@ -14,7 +14,7 @@ class  BestSellers extends Component{
       }],
       subName: {
         name: EMPTY_STRING,
-        price: 0
+        price: EMPTY_STRING
       }
     }
   }

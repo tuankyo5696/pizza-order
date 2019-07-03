@@ -28,10 +28,9 @@ export function* registerSaga(action) {
   let url =
     "https://cors-anywhere.herokuapp.com/https://pizza-ordering-api.herokuapp.com/register";
   try {
-    const response = yield axios.post(url, authData);
-    console.log(response);
+    yield axios.post(url, authData);
   } catch (error) {
-    yield put(actions.authFail(error.response.data.error));
+    yield put(actions.authFail(error));
   }
 }
 export function* authUserSaga(action) {
@@ -47,16 +46,13 @@ export function* authUserSaga(action) {
     let token = response.data.JWT;
     let decoded = jwtDecode(token);
     const expirationDate = yield new Date(new Date().getTime() + decoded.exp);
-    console.log(response);
     let idToken = decoded.id;
-
     yield localStorage.setItem("token", idToken);
     yield localStorage.setItem("expirationDate", expirationDate);
     yield localStorage.setItem("userId", response.data.userData.id);
     yield localStorage.setItem("auth", JSON.stringify(response.data.userData));
-    yield put(actions.authSuccess(idToken, response.data.userData.id));
+    yield put(actions.authSuccess(idToken, response.data.userData.id,response.data.userData));
   } catch (error) {
-    console.log(error);
     yield put(actions.authFail(error));
   }
 }

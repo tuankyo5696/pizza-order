@@ -16,7 +16,7 @@ class Drinks extends Component{
               <img src={this.props.drink.picture} alt={this.props.drink.name} />
               <figcaption>
                 <h4>{this.props.drink.name}</h4>
-                <p className="price"> {this.props.drink.prices[0].price}</p>
+                <p className="price"> {this.props.drink.prices[0].price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, '$1,')+"₫"}</p>
                 <div className="btn-addcart">
                   Add To Cart
                   <span className="lnr lnr-arrow-right" />

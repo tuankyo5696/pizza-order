@@ -30,8 +30,9 @@ class SignIn extends Component {
       );
   }
     let authRedirect = EMPTY_STRING;
-    if(this.props.isAuthenticated){
-      authRedirect = <Redirect to={'/'} />
+    if (this.props.isAuthenticated) {
+      authRedirect = this.props.cartItemCount?
+       <Redirect to={'/'} /> : <Redirect to = {'/payment'}/>
     }
     return (
       <div>
@@ -126,7 +127,11 @@ const mapStateToProps = state => {
     error: state.auth.error,
     user: state.user.auth,
     isAuthenticated: state.auth.token !== EMPTY_STRING,
-    isSignup: state.auth.isSignup
+    isSignup: state.auth.isSignup,
+    cartItems: state.shop.cart,
+    cartItemCount: state.shop.cart.reduce((count, curItem) => {
+      return count + curItem.quantity;
+    }, 0),
   };
 };
 

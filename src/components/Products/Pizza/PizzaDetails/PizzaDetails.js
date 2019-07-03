@@ -13,6 +13,7 @@ import {
 class PizzaDetails extends Component {
   state = {
     totalPrice: 0,
+    checkPrice: 0,
     purchase: false,
     pizza: {}
   };
@@ -23,7 +24,8 @@ class PizzaDetails extends Component {
   };
   purchaseHandler = () => {
     this.props.onAddCart(this.state.pizza);
-  };
+    this.props.cancel();
+  }
   render() {
     const choosePizzaSize = this.props.pizza.prices.map(price => (
       <Field
@@ -68,16 +70,20 @@ class PizzaDetails extends Component {
         })}
         onSubmit={(values, actions) => {
           let totalPrice = 0;
+          let checkPrice = 0;
           let subName = EMPTY_STRING;
           const sizePrice = JSON.parse(values.radioGroup);
           totalPrice = totalPrice + sizePrice.price;
+          checkPrice = checkPrice + sizePrice.price;
           const size = sizePrice.size === "Medium - 9 inch" ? '9"' : '12"';
           if (values.radioGroup3 !== EMPTY_STRING) {
             const topping = JSON.parse(values.radioGroup3);
+            checkPrice = checkPrice + topping.price
             subName = topping;
           }
           this.setState({
             totalPrice: totalPrice,
+            checkPrice: checkPrice,
             pizza: {
               name: size + this.props.pizza.name,
               subName: subName,
@@ -112,9 +118,9 @@ class PizzaDetails extends Component {
                   <p>{this.props.pizza.description}</p>
                   <img src={this.props.pizza.picture} alt={EMPTY_STRING} />
                   <p className="price product-price">
-                    {this.state.totalPrice > 0
-                      ? this.state.totalPrice
-                      : this.props.pizza.prices[0].price}
+                    {this.state.checkPrice > 0
+                      ? this.state.checkPrice.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, '$1,')+"₫"
+                      : this.props.pizza.prices[0].price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, '$1,')+"₫"}
                   </p>
                 </div>
                 <div className="option-list popup-option">

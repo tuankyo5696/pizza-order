@@ -11,7 +11,9 @@ const navigationUser = props => (
     {props.isAuthenticated ? (
       <div className="account">
         {" "}
-        {props.user.firstname + " " + props.user.lastname}{" "}
+
+        
+        {props.user.firstname ? props.user.firstname + " " + props.user.lastname: EMPTY_STRING}{" "}
       </div>
     ) : (
       <ul className="sign-in">
@@ -31,7 +33,7 @@ const navigationUser = props => (
 );
 const mapStateToProps = state => {
   return {
-    user: state.user.auth,
+    user: state.auth.userData,
     isAuthenticated: state.auth.token !== EMPTY_STRING
   };
 };

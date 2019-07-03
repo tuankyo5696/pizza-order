@@ -1,10 +1,20 @@
 import React, { Component } from "react";
 import CartItem from "./../../components/Cart/CartItem";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import "./_CartPage.scss";
 import { EMPTY_STRING } from "../../constants/helper";
 class CartPage extends Component {
+  purchaseHandler = e => {
+    e.preventDefault();
+    if (this.props.isAuthenticated) {
+      this.props.history.push('/payment')
+    }
+    else {
+      this.props.cartItemCount?
+      this.props.history.push('/signin') : this.props.history.push('/pizza')
+    }
+  }
   render() {
     return (
       <div className="menu-cart">
@@ -36,9 +46,9 @@ class CartPage extends Component {
                     <strong>{this.props.totalPrice} ₫</strong>
                   </div>
                   <div className="button-checkout">
-                    <NavLink to={`/cart`} className="btn btn-checkout">
+                    <a className="btn btn-checkout" href="/" onClick={this.purchaseHandler}>
                       Checkout
-                    </NavLink>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -51,6 +61,7 @@ class CartPage extends Component {
 }
 const mapStateToProps = state => {
   return {
+    isAuthenticated: state.auth.token !== EMPTY_STRING,
     cartItems: state.shop.cart,
     cartItemCount: state.shop.cart.reduce((count, curItem) => {
       return count + curItem.quantity;
@@ -60,4 +71,4 @@ const mapStateToProps = state => {
     }, 0)
   };
 };
-export default connect(mapStateToProps)(CartPage);
+export default connect(mapStateToProps)(withRouter(CartPage));
