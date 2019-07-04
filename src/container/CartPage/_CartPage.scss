@@ -302,7 +302,9 @@
         text-transform: uppercase;
         padding-left: 20px;
     }
-
+    .preview-cart >.Side-cart .Booking-table{
+        min-height: 500px;
+    }
     .preview-cart .Side-cart .Booking-table .product {
         display: flex;
         flex-wrap: wrap;

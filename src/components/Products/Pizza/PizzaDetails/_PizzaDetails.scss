@@ -129,7 +129,8 @@
             display: flex;
             display: -webkit-box;
             display: -ms-flexbox;
-
+            height: 500px;
+            overflow-y: auto;
             .product-detail-wrapper {
                 max-width: 350px;
                 -webkit-box-flex: 0;

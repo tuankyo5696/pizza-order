@@ -18,7 +18,11 @@
             color: $white;
             line-height: 25px;
             text-align: center;
-            width: 12%
+            width: 12%;
+            &.active{
+                background: $red;
+
+            }
         }
     }
 }
@@ -27,6 +31,18 @@
     .payment-step .bullets-wrapper .bullet{
         width: 33.333333333333%;
         opacity: .5;
+        &.active{
+            width: 33.333333333333%;
+            opacity: 1;
+        }
     }
-   
+}
+
+@media(min-width : $breakpoint-xl){
+    .payment-step .bullets-wrapper{
+        height: 50px;
+        .bullet{
+            line-height: 50px;
+        }
+    }
 }

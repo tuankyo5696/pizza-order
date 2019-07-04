@@ -1,7 +1,8 @@
 import React from 'react'
 import { withFormik } from 'formik';
-import Step1 from './FormInformation/FormInformation';
-// import Step2 from './FormPaymentInformation/FormPaymentInformation';
+import Step1 from './FormOrderMethod/FormOrderMethod';
+import Step2 from './FormInformation/FormInformation';
+import Step3 from './FormPaymentInformation/FormPaymentInformation';
 import { compose, withState, withHandlers } from "recompose";
 
 const enhance = compose(
@@ -34,15 +35,16 @@ const enhance = compose(
     
           return errors;
         }
-        // validationSchema: ({registerSchema})
+  
       })
 )
 const FormPayment = ({ handleSubmit, step, nextStep, prevStep, ...props }) => (
     <form onSubmit={handleSubmit}>
       {{
-        1: <Step1 nextStep={nextStep} {...props} />,
+      1: <Step1 nextStep={nextStep} {...props} />,
+      2: <Step2 nextStep={nextStep} prevStep={prevStep} {...props} />,
+      3: <Step3 {...props} />
       }[step] || <div />}
     </form>
 );
-  
 export default (enhance(FormPayment))
