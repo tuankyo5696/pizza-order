@@ -7,7 +7,8 @@ const initialState = {
   isSignup: true,
   error: EMPTY_STRING,
   loading: false,
-  authRedirectPath: "/"
+  userData: JSON.parse(localStorage.getItem('auth'))?JSON.parse(localStorage.getItem('auth')): EMPTY_STRING,
+  authRedirectPath: "/",
 };
 
 const authStart = (state, action) => {
@@ -18,6 +19,7 @@ const authSuccess = (state, action) => {
   return updateObject(state, {
     token: action.idToken,
     userId: action.userId,
+    userData: action.userData,
     error: EMPTY_STRING,
     loading: false
   });

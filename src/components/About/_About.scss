@@ -1,0 +1,85 @@
+@import './../../styles/styles.scss';
+.bodyAbout{
+    background-color: rgba(0, 123, 255, 0.09);
+    padding: 10vh 0;
+    display: flex;
+    flex-direction: column;
+    .contentAbout{
+        padding:4rem 2rem;
+        height: 20vh;
+        flex:1;
+        .pAbout{
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: $red;
+        }
+        .pAboutDetails{
+            text-align: justify;
+            font-weight: 500;
+        }
+    }
+    .imgAbout{
+        width: 100vw;
+        flex:1;
+        padding: 1rem;
+            .dabout{
+                height: 30vh;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                margin-bottom: 1rem;
+                border-radius: 5px;
+                border: 2px solid #8080804d;
+            }
+            .divImgAbout1{
+                background-image: url("./../../assets/images/about-1.png");
+            }
+            .divImgAbout2{
+                background-image: url("./../../assets/images/about-2.jpg");
+            }
+            .divImgAbout3{
+                background-image: url("./../../assets/images/about-3.jpg");
+            }
+            .divImgAbout4{
+                background-image: url("./../../assets/images/about-4.png");
+            }
+        }
+}
+
+
+
+@media (min-width:$breakpoint-md) {
+    .bodyAbout .contentAbout {
+        .pAbout {
+            font-size: 2.3rem;
+           }
+        .pAboutDetails {
+        font-size: 1.2rem;
+        }
+    }
+}
+
+@media (min-width:$breakpoint-lg) {
+    .bodyAbout{
+        flex-direction: row;
+        padding: 10vh 0 20vh 0;
+        .contentAbout {
+            padding: 4rem 4rem;
+            .pAbout {
+                font-size: 2.5rem;
+            }
+        }
+        .imgAbout {
+            display: flex;
+            padding-top: 5rem;
+        }.dabout {
+            height: 20vh;
+            width: 20vw;
+            margin-right: 1rem;
+        }
+    }
+    .aCover {
+        display: flex;
+    }
+}

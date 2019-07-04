@@ -1,0 +1,48 @@
+@import './../../styles/styles.scss';
+
+.payment-step{
+    padding-top: 2rem;
+    .bullets-wrapper{
+        margin: 15px 0;
+        background: $dark-grey;
+        height: 25px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        list-style-type: none;
+        overflow: hidden;
+        .bullet{
+            font-size: .75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: $white;
+            line-height: 25px;
+            text-align: center;
+            width: 12%;
+            &.active{
+                background: $red;
+
+            }
+        }
+    }
+}
+
+@media (min-width: $breakpoint-lg){
+    .payment-step .bullets-wrapper .bullet{
+        width: 33.333333333333%;
+        opacity: .5;
+        &.active{
+            width: 33.333333333333%;
+            opacity: 1;
+        }
+    }
+}
+
+@media(min-width : $breakpoint-xl){
+    .payment-step .bullets-wrapper{
+        height: 50px;
+        .bullet{
+            line-height: 50px;
+        }
+    }
+}

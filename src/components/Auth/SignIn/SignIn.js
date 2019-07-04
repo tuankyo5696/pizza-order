@@ -4,16 +4,15 @@ import { EMPTY_STRING } from "./../../../constants/helper";
 import * as Yup from "yup";
 import "./_Signin.scss";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter,Redirect } from "react-router-dom";
 import * as actions from "./../../../store/actions/index";
 
 class SignIn extends Component {
   submitHandler = account => {
-    if (account) {
       this.props.onAuth(account.email, account.password, !this.props.isSignup);
-      this.props.history.push("/");
     }
-  };
+   
+
   render() {
     const signInSchema = Yup.object().shape({
       email: Yup.string()
@@ -24,8 +23,20 @@ class SignIn extends Component {
         .max(50, "Too long")
         .required("Password is required")
     });
+    let errorMessage = EMPTY_STRING;
+    if ( this.props.error ) {
+      errorMessage = (
+          <p>{this.props.error.message}</p>
+      );
+  }
+    let authRedirect = EMPTY_STRING;
+    if (this.props.isAuthenticated) {
+      authRedirect = this.props.cartItemCount?
+       <Redirect to={'/'} /> : <Redirect to = {'/payment'}/>
+    }
     return (
       <div>
+        {authRedirect}
         <Formik
           initialValues={{
             email: EMPTY_STRING,
@@ -105,6 +116,7 @@ class SignIn extends Component {
             </section>
           )}
         </Formik>
+        {errorMessage}
       </div>
     );
   }
@@ -115,7 +127,11 @@ const mapStateToProps = state => {
     error: state.auth.error,
     user: state.user.auth,
     isAuthenticated: state.auth.token !== EMPTY_STRING,
-    isSignup: state.auth.isSignup
+    isSignup: state.auth.isSignup,
+    cartItems: state.shop.cart,
+    cartItemCount: state.shop.cart.reduce((count, curItem) => {
+      return count + curItem.quantity;
+    }, 0),
   };
 };
 

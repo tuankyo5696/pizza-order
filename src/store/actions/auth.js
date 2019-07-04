@@ -13,11 +13,12 @@ export const authFail = error => {
   };
 };
 
-export const authSuccess = (token, userId) => {
+export const authSuccess = (token, userId,userData) => {
   return {
     type: type.AUTH_SUCCESS,
     token,
-    userId
+    userId,
+    userData
   };
 };
 export const logout = () => {

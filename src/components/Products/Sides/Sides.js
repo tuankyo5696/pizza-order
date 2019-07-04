@@ -17,7 +17,7 @@ class Sides extends Component{
               <img src={this.props.side.picture} alt={this.props.side.name} />
               <figcaption>
                 <h4>{this.props.side.name}</h4>
-                <p className="price"> {this.props.side.prices[0].price}</p>
+                <p className="price"> {this.props.side.prices[0].price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, '$1,')+"₫"}</p>
                 <div className="btn-addcart">
                   Add To Cart
                   <span className="lnr lnr-arrow-right" />

@@ -12,6 +12,9 @@ import DessertPage from "./container/ProductsPage/DessertPage/DessertPage";
 import PromotionPage from "./container/PromotionPage/PromotionPage";
 import Logout from "./container/AuthPage/Logout/Logout";
 import CartPage from "./container/CartPage/CartPage";
+import AboutPage from "./container/AboutPage/AboutPage";
+import PaymentPage from "./container/PaymentPage/PaymentPage";
+import ContactPage from "./container/ContactPage/Contactpage";
 class App extends Component {
   render() {
     return (
@@ -29,6 +32,9 @@ class App extends Component {
             <Route path="/promotion" component={PromotionPage} />
             <Route path="/logout" component={Logout} />
             <Route path="/cart" component={CartPage} />
+            <Route path="/about" component={AboutPage} />
+            <Route path="/payment" component={PaymentPage} />
+            <Route path="/contact" component= {ContactPage} />
           </Switch>
         </Layout>
       </div>

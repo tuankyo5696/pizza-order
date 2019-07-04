@@ -49,14 +49,15 @@ const mapStateToProps = state => {
     totalPrice: state.shop.cart.reduce((count, curItem) => {
       let total = count;
       if (curItem.category.name === "Pizzas") {
-        total = total + curItem.prices[0].price * curItem.quantity + curItem.subName.price
-      }
-      else {
+        total =
+          total +
+          curItem.prices[0].price * curItem.quantity +
+          curItem.subName.price;
+      } else {
         total = total + curItem.prices[0].price * curItem.quantity;
       }
       return total;
-    }, 0),
-   
+    }, 0)
   };
 };
 export default connect(mapStateToProps)(sidecart);
