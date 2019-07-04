@@ -1,12 +1,7 @@
-import React from 'react'
+import React from "react";
+import {EMPTY_STRING} from './../../../constants/helper'
+import "./_Backdrop.scss";
+const backDrop = props =>
+  props.show ? <div className="Backdrop" onClick={props.clicked} /> : EMPTY_STRING;
 
-import classes from './_Backdrop.scss';
-import PropTypes from 'prop-types';
-const backDrop = (props) => (
-    props.show? <div className={classes.Backdrop} onClick ={this.props.clicked}></div> :null
-)
-
-backDrop.PropTypes = {
-    show : PropTypes.bool.isRequired
-}
 export default backDrop;

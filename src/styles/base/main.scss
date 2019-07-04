@@ -99,6 +99,7 @@ html {
     padding-right: 15px;
     padding-left: 15px
 }
+
 *,
 ::after,
 ::before {
@@ -114,6 +115,7 @@ html {
     -ms-overflow-style: scrollbar;
     -webkit-tap-highlight-color: transparent
 }
+
 article,
 aside,
 figcaption,
@@ -137,11 +139,17 @@ body {
     text-align: left;
     background-color: #fff
 }
+
 hr {
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
     height: 0;
     overflow: visible
+}
+
+.pb-4,
+.py-4 {
+    padding-bottom: 1.5rem
 }
 
 h1,
@@ -157,4 +165,47 @@ h6 {
 p {
     margin-top: 0;
     margin-bottom: 1rem
+}
+
+img {
+    vertical-align: middle;
+    border-style: none
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width:576px) {
+    .container {
+        max-width: 100%
+    }
+}
+
+@media (min-width:768px) {
+    .container {
+        max-width: 720px
+    }
+}
+
+@media (min-width:992px) {
+    .container {
+        max-width: 960px
+    }
+}
+
+@media (min-width:1200px) {
+    .container {
+        max-width: 1140px
+    }
+}
+
+@media (min-width:1440px) {
+    .container {
+        max-width: 1350px
+    }
 }

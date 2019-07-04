@@ -3,3 +3,12 @@
 .divLogin {
     padding: 2rem 0;
 }
+.errorMessage{
+    position: fixed;
+    height: 20px;
+    z-index: 100;
+    color: $red;
+    background: $white;
+    text-align: center;
+    margin: 20px;
+}

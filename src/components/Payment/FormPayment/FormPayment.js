@@ -35,7 +35,7 @@ const enhance = compose(
     
           return errors;
         }
-        // validationSchema: ({registerSchema})
+  
       })
 )
 const FormPayment = ({ handleSubmit, step, nextStep, prevStep, ...props }) => (

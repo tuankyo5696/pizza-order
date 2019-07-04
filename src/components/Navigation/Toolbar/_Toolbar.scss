@@ -1,76 +1,107 @@
-@import  './../../../styles/styles.scss';
-.Toolbar{
-    width : 100%;
-    position : fixed;
+@import './../../../styles/styles.scss';
+
+.Toolbar {
+    position: fixed;
     top: 0;
-    background-color: $dark-grey;
-    display: block;
-    box-sizing: border-box;
+    width: 100%;
     z-index: 40;
+    margin: auto;
+    background-color: $dark-grey;
+
     .container {
-        width:  100%;
-        padding: 0 15px;
-        margin: 0 auto;
-        .row{
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            margin-right: -15px;
-            margin-left: -15px;
-            .col-auto{
-                -webkit-box-flex: 0;
-                -ms-flex: 0 0 auto;
-                flex: 0 0 auto;
-                width: auto;
-                .Logo{
-                @media (min-width: 1200px) and (min-width: 768px){
-                        max-width: 330px;
-                    }
-                }
-                @media (min-width: 768px) and (min-width: 992px){
-                         max-width: 285px;
-                }
-                }
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .row {
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+
+        .col-auto {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+            width: auto;
+            max-width: none;
+
+            &.ml-auto {
+                margin-left: auto;
+            }
+
+            .menu-option-wrap {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-orient: horizontal;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                flex-direction: row;
+                align-items: center;
             }
         }
     }
-.Toolbar nav{
-    height: 100%;
-}
-.Logo{
-    height: 80%
-}
-@media (min-width: 1200px){
-.container {
-    max-width: 1140px;
-}
-@media (min-width: 992px){
-    .container{
-        max-width: 960px;
-    }
-}
-@media (min-width: 768px){
-    .container{
-        max-width: 720px;
-    }
-}
-@media (min-width: 576px){
-    .container{
-        max-width: 100%;
-    }
-}
-@media (min-width: 1200px){
-    .container{
-        max-width: 1140px;
-    }
 }
 
 
+@media(max-width : $breakpoint-md) {
+    .Toolbar {
+        padding: 12px 0;
+
+        .container {
+            .tbUser {
+                display: none;
+            }
+        }
+    }
 }
-@media (max-width : 540px){
-    .DesktopOnly{
-        display: none
+
+@media (min-width: $breakpoint-md) and (min-width: $breakpoint-lg) {
+    .Toolbar {
+        padding: 28.61px 0
+    }
+}
+
+@media (min-width: $breakpoint-lg) {
+    .container {
+        max-width: 100%
+    }
+}
+
+@media (min-width:$breakpoint-md) {
+    .Toolbar {
+        padding: 0.8rem 0;
+
+        .container {
+            max-width: 720px;
+        }
+    }
+}
+
+@media (min-width:$breakpoint-lg) {
+    .Toolbar {
+        .container {
+            max-width: 960px
+        }
+    }
+}
+
+@media (min-width:$breakpoint-xl) {
+    .Toolbar {
+        .container {
+            max-width: 1140px
+        }
+    }
+}
+
+@media (min-width:1440px) {
+    .Toolbar {
+        .container {
+            max-width: 1350px
+        }
     }
 }

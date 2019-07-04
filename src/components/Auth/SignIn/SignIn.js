@@ -6,14 +6,20 @@ import "./_Signin.scss";
 import { connect } from "react-redux";
 import { withRouter,Redirect } from "react-router-dom";
 import * as actions from "./../../../store/actions/index";
+import Spinner from './../../../components/UI/Spinner/Spinner';
 
 class SignIn extends Component {
+  state = {
+    spinner : EMPTY_STRING
+  }
   submitHandler = account => {
+      this.setState({spinner : <Spinner /> })
       this.props.onAuth(account.email, account.password, !this.props.isSignup);
     }
    
 
   render() {
+    const {spinner} =this.state
     const signInSchema = Yup.object().shape({
       email: Yup.string()
         .email("Invalid Email")
@@ -26,12 +32,12 @@ class SignIn extends Component {
     let errorMessage = EMPTY_STRING;
     if ( this.props.error ) {
       errorMessage = (
-          <p>{this.props.error.message}</p>
+          <p className ="errorMessage" >{this.props.error.message}</p>
       );
   }
     let authRedirect = EMPTY_STRING;
     if (this.props.isAuthenticated) {
-      authRedirect = this.props.cartItemCount?
+      authRedirect = !this.props.cartItemCount?
        <Redirect to={'/'} /> : <Redirect to = {'/payment'}/>
     }
     return (
@@ -51,6 +57,7 @@ class SignIn extends Component {
           }}
         >
           {({ errors, touched }) => (
+            <>
             <section className="Register LoginSection">
               <div className="coverSignUp">
                 <div className="container">
@@ -112,11 +119,19 @@ class SignIn extends Component {
                     </div>
                   </div>
                 </div>
-              </div>
+                               
+                </div>
+              
+                <div >
+                  {spinner}
+                  </div>
+                {errorMessage} 
             </section>
-          )}
+          
+          </>
+        )}
         </Formik>
-        {errorMessage}
+       
       </div>
     );
   }

@@ -6,7 +6,7 @@ import Pay2 from './../../../../assets/images/pay2.png';
 import Pay3 from './../../../../assets/images/pay3.png';
 import Pay4 from './../../../../assets/images/pay4.png';
 const Step3 = props => {
-    let attachClass
+
     return (
         <div>
             <Navbar active1={false} active2={false} active3={true} />
