@@ -54,7 +54,7 @@ a {
         -webkit-transition: all .3s ease-in-out;
         -o-transition: all .3s ease-in-out;
         transition: all .3s ease-in-out;
-        padding: 5px;
+        padding: 4px;
 
         .box-img {
             margin-bottom: 10px;
@@ -74,7 +74,11 @@ a {
             -webkit-transition: all .3s ease-in-out;
             -o-transition: all .3s ease-in-out;
             transition: all .3s ease-in-out;
-            height: 100%;
+            -ms-flex-preferred-size: 0;
+            flex-basis: 0;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -85,14 +89,16 @@ a {
             font-size: .75rem;
 
             h4 {
-                font-size: 15px;
+                font-size: 10px;
                 font-weight: 900;
                 text-transform: uppercase;
+
             }
 
             p {
-                font-size: 10px;
+                font-size: 9px;
                 font-weight: 400;
+
             }
 
             .price {
@@ -103,6 +109,7 @@ a {
             }
 
             .btn-addcart {
+                margin-top: auto;
                 margin-right: auto;
                 margin-left: auto;
                 white-space: nowrap;

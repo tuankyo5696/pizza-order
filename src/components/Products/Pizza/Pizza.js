@@ -35,6 +35,7 @@ class Pizza extends Component {
                   src={this.props.pizza.picture}
                   alt={this.props.pizza.name}
                 />
+                </div>
                 <figcaption>
                   <h4>{this.props.pizza.name}</h4>
                   <p> {this.props.pizza.description}</p>
@@ -43,7 +44,7 @@ class Pizza extends Component {
                     <span className="lnr lnr-arrow-right" />
                   </div>
                 </figcaption>
-              </div>
+              
             </figure>
           </a>
         </div>

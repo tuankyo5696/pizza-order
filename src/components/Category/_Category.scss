@@ -11,7 +11,6 @@
             margin-right: 0;
             margin-left: 0;
         }
-
         .menu-item {
             padding: 0 5px;
             min-height: 50vh;
@@ -62,9 +61,9 @@
                 background-position: center center;
                 background-size: cover;
             }
-
             &.bg-img1 {
-                background-image: url('./../../assets/images/pizza-category.png')
+                background-image: url('./../../assets/images/pizza-category.png');
+                border: 1px solid white;
             }
 
             &.bg-img2 {
