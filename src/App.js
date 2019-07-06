@@ -13,8 +13,9 @@ import PromotionPage from "./container/PromotionPage/PromotionPage";
 import Logout from "./container/AuthPage/Logout/Logout";
 import CartPage from "./container/CartPage/CartPage";
 import AboutPage from "./container/AboutPage/AboutPage";
-import PaymentPage from "./container/PaymentPage/PaymentPage";
+import PaymentShipPage from "./container/PaymentPage/PaymentShipPage";
 import ContactPage from "./container/ContactPage/Contactpage";
+import PaymentStorePage from "./container/PaymentPage/PaymentStorePage";
 class App extends Component {
   render() {
     return (
@@ -33,8 +34,9 @@ class App extends Component {
             <Route path="/logout" component={Logout} />
             <Route path="/cart" component={CartPage} />
             <Route path="/about" component={AboutPage} />
-            <Route path="/payment" component={PaymentPage} />
-            <Route path="/contact" component= {ContactPage} />
+            <Route path="/payment" component={PaymentShipPage} />
+            <Route path="/contact" component={ContactPage} />
+            <Route path="/payment-store" component={PaymentStorePage} />
           </Switch>
         </Layout>
       </div>

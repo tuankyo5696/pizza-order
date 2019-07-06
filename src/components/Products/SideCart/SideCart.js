@@ -49,10 +49,11 @@ const mapStateToProps = state => {
     totalPrice: state.shop.cart.reduce((count, curItem) => {
       let total = count;
       if (curItem.category.name === "Pizzas") {
-        total =
+       total = curItem.subName.price ?
           total +
           curItem.prices[0].price * curItem.quantity +
-          curItem.subName.price;
+          curItem.subName.price:   total +
+          curItem.prices[0].price * curItem.quantity 
       } else {
         total = total + curItem.prices[0].price * curItem.quantity;
       }

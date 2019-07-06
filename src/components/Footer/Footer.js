@@ -33,7 +33,7 @@ const Footer = props => (
               <img src={Visa} alt="visa" />
             </div>
           </div>
-          <a className="hotline-fixed" href="tel:19006099">
+          <a className="hotline-fixed" href="tel: 02838123367">
             <span>
               <i className="fas fa-phone" />
             </span>

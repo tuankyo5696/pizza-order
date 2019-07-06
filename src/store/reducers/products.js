@@ -18,7 +18,6 @@ const fetchProductFailed = (state, action) => {
 };
 
 const fetchPizzaSuccess = (state, action) => {
-  console.log(action.pizza);
   return updateObject(state, {
     pizza: action.pizza,
     loading: false

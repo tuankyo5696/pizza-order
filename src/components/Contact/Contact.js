@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import Geocode from "react-geocode";
-import Autocomplete from 'react-google-autocomplete';
-
+import LocationSearchInput from './../Map/LocationSearchInput';
 Geocode.setApiKey( "AIzaSyBp82fdgtmvXSGr7rrgYQZ74db66mXZrHA" );
 Geocode.enableDebug();
 
@@ -241,18 +240,7 @@ class MapToGo extends Component{
 						        position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}
 						/>
 						<Marker />
-						{/* For Auto complete Search Box */}
-						<Autocomplete
-							style={{
-								width: '100%',
-								height: '40px',
-								paddingLeft: '16px',
-								marginTop: '2px',
-								marginBottom: '500px'
-							}}
-							onPlaceSelected={ this.onPlaceSelected }
-							types={['(regions)']}
-						/>
+						<LocationSearchInput changePosition={this.changePosition} />
 					</GoogleMap>
 				)
 			)
@@ -273,24 +261,6 @@ class MapToGo extends Component{
 						<div style={{ height: `100%` }} />
 					}
 				/>
-				{/* <div>
-					<div className="form-group">
-						<label htmlFor="">City</label>
-						<input type="text" name="city" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.city }/>
-					</div>
-					<div className="form-group">
-						<label htmlFor="">Area</label>
-						<input type="text" name="area" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.area }/>
-					</div>
-					<div className="form-group">
-						<label htmlFor="">State</label>
-						<input type="text" name="state" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.state }/>
-					</div>
-					<div className="form-group">
-						<label htmlFor="">Address</label>
-						<input type="text" name="address" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.address }/>
-					</div>
-				</div> */}
 
 			</div>
 		} else {

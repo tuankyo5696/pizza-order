@@ -1,0 +1,67 @@
+@import './../../styles/styles.scss';
+.vhs-shop-list{
+
+    padding: 14px 0;
+    position: absolute;
+    top: 150px;
+    z-index: 100;
+    background-image: url('./../../assets/images/popup_bg_1.png');
+    background-size: cover;
+    background-position: center center;
+    h2{
+     text-align: center;
+    color:$blue;
+    text-transform: uppercase;
+    font-size: 18px;
+    padding-bottom: 14px
+    }
+    h3{
+        font-weight: 400px;
+        font-size: 15px;
+        text-transform: uppercase;
+        color: $white;
+        padding: 0 5px;
+    }
+    .Block-content{
+        padding: 0 15px;
+        .custom-select{
+            margin-bottom: 10px;
+        }
+        label {
+            background: $green;
+            padding: 7px 20px;
+            span{
+                font-weight: 300px;
+                font-size: 12px;
+                text-transform: uppercase;
+                color: $white;
+            }
+        }
+    }
+}
+
+@media(min-width: $breakpoint-sm){
+    .vhs-shop-list {
+        padding: 1.3125rem 0;
+        h2{
+            font-size: 1.6875rem;
+            padding-bottom: 1.3125rem;
+        }
+        h3{
+            font-size: 1.5rem;
+        }
+    }
+}
+
+@media (min-width:$breakpoint-lg) {
+    .vhs-shop-list {
+        padding: 28px 0;
+        h2{
+            font-size: 30px;
+            padding-bottom: 28px;
+        }
+        h3{
+            font-size: 20px;
+        }
+    }
+}

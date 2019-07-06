@@ -1,128 +1,94 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom'
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
-import './Map.scss';
+import React from "react";
+import { withRouter } from "react-router-dom";
+import { EMPTY_STRING } from "../../constants/helper";
+import './_Contact.scss';
 class LocationSearchInput extends React.Component {
   state = {
-    address: '',
+    address: localStorage.getItem('address') ? localStorage.getItem('address') : EMPTY_STRING,
     suggestion: [
       {
-        mainText: 'Exeter',
-        secondaryText: 'Vương Quốc Anh'
+        name: "Select Store",
+        latLng: {
+          lat: 10.8020047,
+          lng: 106.6413804
+        }
       },
       {
-        mainText: 'Eindhovenr',
-        secondaryText: 'Hà Lan'
+        
+        name: "Vương Quốc Anh",
+        latLng: {
+          lat: 50.718412,
+          lng: -3.5338990000000194
+        }
       },
       {
-        mainText: 'ETown',
-        secondaryText: 'Cộng Hòa, phường 13, Tân Bình, Hồ Chí Minh, Việt Nam'
+        name: "Hà Lan",
+        latLng: {
+          lat: 51.44164199999999,
+          lng: 5.469722499999989
+        }
       },
       {
-        mainText: 'Nguyễn Văn Luông',
-        secondaryText: 'Quận 6, Hồ Chí Minh, Việt Nam'
+        name:
+          " ETown Floor 2 Cộng Hòa, phường 13, Tân Bình, Hồ Chí Minh, Việt Nam",
+        latLng: {
+          lat: 10.8020047,
+          lng: 106.6413804
+        }
+      },
+      {
+        name: "Quận 6, Hồ Chí Minh, Việt Nam",
+        latLng: {
+          lat: 10.7434224,
+          lng: 106.63468290000003
+        }
       }
-
     ]
-  }
-  componentWillMount() {
-    if (localStorage && localStorage.getItem('address')) {
-      const addressFrom = localStorage.getItem('address')
-      this.setState({
-        address: addressFrom
-      })
-    }
-  }
-
-  handleChange = address => {
-    this.setState({ address });
   };
-
-  handleSelect = address => {
-    localStorage.setItem('address', address);
-    geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
-      .then(latLng => this.props.changePosition(latLng))
-      .catch(error => console.error('Error', error));
-    this.setState({ address: address });
-
-
-  };
-  suggestionChoose = (address) => {
+  handleChange = e => { 
+    let obj = JSON.parse(e.target.value);
+    this.props.changePosition(obj.latLng);
+    localStorage.setItem('address',obj.name);
+    
     this.setState({
-      address
+      address: obj.name
     })
-  }
-  addressResult = () => {
-    const address = this.state.address;
-    if (address) {
-      localStorage.setItem('address', address);
-    }
-  }
+  };
+
   render() {
-    return (
-      <PlacesAutocomplete
-        value={this.state.address}
-        onChange={this.handleChange}
-        onSelect={this.handleSelect}
-      >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading, value }) => {
+    const renderSuggestion = this.state.suggestion.map((option, index) => (
+      <option key={index} value={JSON.stringify(option)}>
+        {option.name}
+      </option>
+    ));
+    const optionStore = (
+      <section className="vhs-shop-list">
+        <h2>Pyco's Store</h2>
 
-          const renderSuggestion = this.state.suggestion.map((item, index) => (
-            <div className="suggestion" key={index} onClick={() => { this.suggestionChoose(item.secondaryText) }}>
-              <i className="fas fa-map-marker-alt"></i>
-              <div className="place-group">
-                <h6>{item.mainText}</h6>
-                <p>{item.secondaryText}</p>
+        <div className="Block-content">
+          <div className="Block-shop-list-nav">
+            <div className="form">
+              <div className="form-group">
+                <h3>Store</h3>
+                <select
+                  className="form-control custom-select"
+                  onChange={this.handleChange}
+              
+                >
+                  {renderSuggestion}
+                </select>
+                <label className ="active">
+                  <span>{this.state.address}</span>
+                </label>
+                
               </div>
             </div>
-          ))
-          return (
-            <div>
-
-              <div className="Pickup">
-                <div className="placeContainer">
-                  <label htmlFor="square" ><i className="fas fa-square"></i></label>
-                  <input
-                    {...getInputProps({
-                      placeholder: 'Search Places ...',
-                      className: 'location-search-input',
-                    })}
-
-                  />
-                  <button className="Button" onClick={this.addressResult}><i className="fas fa-search"></i></button>
-                  <div className="autocomplete-dropdown-container">
-                    {loading && <div>Loading...</div>}
-                    {
-                      this.state.address.length > 0 ?
-                        suggestions.map(suggestion => {
-
-                          return (
-                            <div className="suggestion" {...getSuggestionItemProps(suggestion)} >
-                              <i className="fas fa-map-marker-alt"></i>
-                              <div className="place-group">
-                                <h6>{suggestion.formattedSuggestion.mainText}</h6>
-                                <p>{suggestion.formattedSuggestion.secondaryText}</p>
-                              </div>
-                            </div>
-                          );
-                        })
-                        : renderSuggestion
-                    }
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-
-          )
-        }}
-      </PlacesAutocomplete>
+          </div>
+        </div>
+      </section>
     );
+
+    return <div>{optionStore}</div>;
   }
 }
 export default withRouter(LocationSearchInput);
