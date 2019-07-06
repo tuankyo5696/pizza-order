@@ -8,7 +8,7 @@
         text-align: center;
         transition: all 0.3s ease-out;
         box-sizing: border-box;
-        max-width: 320px;
+        max-width: 290px;
         vertical-align: top;
         background: url('./../../../assets/images/popup_bg_1.png') repeat-y;
         background-size: 100%;
@@ -27,6 +27,18 @@
         -o-transition: all 0.3s ease-out;
     }
 }
+
+@media (max-width: $breakpoint-sm){
+    .Modal-Wrapper{
+        .Modal{
+            overflow-y: auto;
+        }
+    }
+    .option-list.popup-option {
+        max-height: 40vh;
+    }
+}
+
 
 @media (min-width: $breakpoint-sm){
     .Modal-Wrapper{

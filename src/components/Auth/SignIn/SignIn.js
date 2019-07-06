@@ -32,7 +32,7 @@ class SignIn extends Component {
     let errorMessage = EMPTY_STRING;
     if ( this.props.error ) {
       errorMessage = (
-          <p className ="errorMessage" >{this.props.error.message}</p>
+          <p className ="errorMessage" >Username or Password is wrong!</p>
       );
   }
     let authRedirect = EMPTY_STRING;

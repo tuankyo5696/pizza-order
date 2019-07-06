@@ -11,7 +11,7 @@ const Step1 = props => {
   };
   const getNext2 = e => {
     e.preventDefault();
-    props.history.push('/paymentStore')
+    props.history.push('/payment-store')
   }
   return (
     <div>
