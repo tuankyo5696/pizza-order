@@ -14,7 +14,7 @@ const navbarPayment = props => {
     attachClasses3 = ["bullet", "active"];
   }
   return (
-    <section className="payment-step">
+    <section className="payment-step" style={{margin : '100px 0'}}>
       <div className="container">
         <div className="row">
           <div className="col">

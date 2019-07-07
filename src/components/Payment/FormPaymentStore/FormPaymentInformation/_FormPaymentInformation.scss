@@ -79,23 +79,7 @@
         border: 1px solid #04354c;
         padding: 10px 0;
         background: $white;
-        &:before{
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: calc(100% - 10px);
-            height: calc(100% - 10px);
-            border: 1px solid $white;
-            -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            border-radius: 3px;
-            -webkit-border-radius: 3px;
-            -moz-border-radius: 3px;
-            -ms-border-radius: 3px;
-            -o-border-radius: 3px;
-        }
+
 
         ul {
             list-style-type: none;
@@ -191,40 +175,6 @@ label {
     box-sizing: border-box;
 }
 
-.checkout.step-4 .page-content .accept-license label:before {
-    content:  "";
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border-radius: 2px;
-    border: 1px solid #04354c;
-    left: 0;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-.checkout.step-4 .page-content .accept-license label .active :before{
-    content: "";
-    font-family: "Font Awesome 5 Free";
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1;
-    font-weight: 900;
-    /* font-size: .625rem; */
-    /* display: -webkit-box; */
-    display: -ms-flexbox;
-    /* display: flex; */
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    /* -webkit-box-align: center; */
-    -ms-flex-align: center;
-    /* align-items: center; */
-}
 
 .checkout.step-4 .page-content .accept-license label {
     font-size: 12px;

@@ -43,15 +43,17 @@ export function* authUserSaga(action) {
     "https://cors-anywhere.herokuapp.com/https://pizza-ordering-api.herokuapp.com/auth";
   try {
     const response = yield axios.post(url, authData);
+    console.log(response)
     let token = response.data.JWT;
     let decoded = jwtDecode(token);
     const expirationDate = yield new Date(new Date().getTime() + decoded.exp);
+    console.log(decoded)
     let idToken = decoded.id;
     yield localStorage.setItem("token", idToken);
     yield localStorage.setItem("expirationDate", expirationDate);
-    yield localStorage.setItem("userId", response.data.userData.id);
-    yield localStorage.setItem("auth", JSON.stringify(response.data.userData));
-    yield put(actions.authSuccess(idToken, response.data.userData.id,response.data.userData));
+    yield localStorage.setItem("userId", decoded._id);
+    yield localStorage.setItem("auth", decoded);
+    yield put(actions.authSuccess(idToken, decoded._id,decoded));
   } catch (error) {
     yield put(actions.authFail(error));
   }

@@ -8,6 +8,10 @@ import Pay4 from "./../../../../assets/images/pay4.png";
 import {Field} from 'formik'
 import { EMPTY_STRING } from "../../../../constants/helper";
 const Step3 = props => {
+  const getBack = e => {
+    e.preventDefault()
+    props.prevStep();
+  }
   return (
     <div>
       <Navbar active1={false} active2={false} active3={true} />
@@ -34,6 +38,9 @@ const Step3 = props => {
                           value = {props.values.fullname}
                           placeholder="Enter Fullname"
                         />
+                           {props.errors.fullname && props.touched.fullname ? (
+                                  <div className="Invalid">{props.errors.fullname}</div>
+                                ) : EMPTY_STRING}
                       </div>
                       <div className="EmailPhone">
                         <div className="form-group col-6">
@@ -60,6 +67,9 @@ const Step3 = props => {
                             value = {props.values.phone}
                             placeholder="Enter PhoneNumber"
                           />
+                             {props.errors.phone && props.touched.phone ? (
+                                  <div className="Invalid">{props.errors.phone}</div>
+                                ) : EMPTY_STRING}
                         </div>
                       </div>
 
@@ -172,6 +182,13 @@ const Step3 = props => {
                           <p>Thank you for ordering at Pyco's Pizza Vietnam.</p>
                         </div>
                         <div className="form-group col-12">
+                        <a
+                        className="btn btn-prev"
+                        href="/"
+                        onClick={getBack}
+                      >
+                        Go Back
+                      </a>
                           <button
                             className="btn-book btn btn-next"
                             type="submit"

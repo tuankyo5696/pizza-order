@@ -137,9 +137,12 @@ class Step2 extends Component {
                       type="text"
                       name="houseNumber"
                       value={values.houseNumber}
-                      errors={errors.houseNumber}
+
                       // touched = {touched.houseNumber}
                     />
+                       {errors.houseNumber && touched.houseNumber ? (
+                                  <div className="Invalid">{errors.houseNumber}</div>
+                                ) : EMPTY_STRING}
                     <div className="col-12 form-group">
                       <label>
                         Street<span className="star">(*)</span>
@@ -198,13 +201,13 @@ class Step2 extends Component {
                       >
                         Go Back
                       </a>
-                      <a
+                      <button
                         className="btn-book btn btn-next"
-                        href="/"
+
                         onClick={this.next}
                       >
                         Order
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>

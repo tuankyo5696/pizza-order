@@ -62,7 +62,7 @@ const FormPayment = ({ handleSubmit, step, nextStep, prevStep, ...props }) => (
       {{
       1: <Step1 nextStep={nextStep} {...props} />,
       2: <Step2 nextStep={nextStep} prevStep={prevStep} {...props} />,
-      3: <Step3 {...props} />
+      3: <Step3 prevStep = {prevStep}{...props} />
       }[step] || <div />}
     </form>
 );
