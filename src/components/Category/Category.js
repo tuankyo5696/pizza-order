@@ -9,30 +9,31 @@ const category = props => (
   <section className="menu">
     <article>
       <div className="row no-gutters">
-        <div className="col-lg-6 menu-item bg-img1" bg-img={Pizza}>
+        <NavLink to= {`/pizza`} className="col-lg-6 menu-item bg-img1" bg-img={Pizza} >
           <h2>Pizza</h2>
-          <NavLink to={`/pizza`} className="btn-view">
+          <div to={`/pizza`} className="btn-view">
             See more
-          </NavLink>
-        </div>
-        <div className="col-lg-6 menu-item bg-img2" bg-img={SideDish}>
+          </div>
+        </NavLink>
+        
+        <NavLink to= {`/side-dish`} className="col-lg-6 menu-item bg-img2" bg-img={SideDish}>
           <h2>Side dish</h2>
-          <NavLink to={`/side-dish`} className="btn-view">
+          <div to={`/side-dish`} className="btn-view">
             See more
-          </NavLink>
-        </div>
-        <div className="col-lg-6 menu-item bg-img3" bg-img={Drinks}>
+          </div>
+        </NavLink>
+        <NavLink to= {`/drinks`}className="col-lg-6 menu-item bg-img3" bg-img={Drinks}>
           <h2>Drinks</h2>
-          <NavLink to={`/drinks`} className="btn-view">
+          <div to={`/drinks`} className="btn-view">
             See more
-          </NavLink>
-        </div>
-        <div className="col-lg-6 menu-item bg-img4" bg-img={Dessert}>
+          </div>
+        </NavLink>
+        <NavLink to= {`/dessert`} className="col-lg-6 menu-item bg-img4" bg-img={Dessert}>
           <h2>Dessert</h2>
-          <NavLink to={`/dessert`} className="btn-view">
+          <div to={`/dessert`} className="btn-view">
             See more{" "}
-          </NavLink>
-        </div>
+          </div>
+        </NavLink>
       </div>
     </article>
   </section>

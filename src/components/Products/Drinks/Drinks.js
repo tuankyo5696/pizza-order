@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import * as actions from './../../../store/actions/index';
+import './_Drinks.scss';
 class Drinks extends Component{
   addCart =  e => {
     e.preventDefault();
@@ -14,6 +15,7 @@ class Drinks extends Component{
           <figure>
             <div className="box-img">
               <img src={this.props.drink.picture} alt={this.props.drink.name} />
+              </div>
               <figcaption>
                 <h4>{this.props.drink.name}</h4>
                 <p className="price"> {this.props.drink.prices[0].price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, '$1,')+"₫"}</p>
@@ -22,7 +24,6 @@ class Drinks extends Component{
                   <span className="lnr lnr-arrow-right" />
                 </div>
               </figcaption>
-            </div>
           </figure>
         </a>
       </div>

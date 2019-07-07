@@ -15,6 +15,7 @@ class Sides extends Component{
           <figure>
             <div className="box-img">
               <img src={this.props.side.picture} alt={this.props.side.name} />
+              </div>
               <figcaption>
                 <h4>{this.props.side.name}</h4>
                 <p className="price"> {this.props.side.prices[0].price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, '$1,')+"₫"}</p>
@@ -23,7 +24,7 @@ class Sides extends Component{
                   <span className="lnr lnr-arrow-right" />
                 </div>
               </figcaption>
-            </div>
+         
           </figure>
         </a>
       </div>

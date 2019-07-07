@@ -1,8 +1,8 @@
-import React from "react";
+import React,{Component} from "react";
 import { withRouter } from "react-router-dom";
 import { EMPTY_STRING } from "../../constants/helper";
 import './_Contact.scss';
-class LocationSearchInput extends React.Component {
+class LocationSearchStore extends Component {
   state = {
     address: localStorage.getItem('address') ? localStorage.getItem('address') : EMPTY_STRING,
     suggestion: [
@@ -48,7 +48,6 @@ class LocationSearchInput extends React.Component {
     let obj = JSON.parse(e.target.value);
     this.props.changePosition(obj.latLng);
     localStorage.setItem('address',obj.name);
-    
     this.setState({
       address: obj.name
     })
@@ -72,14 +71,28 @@ class LocationSearchInput extends React.Component {
                 <select
                   className="form-control custom-select"
                   onChange={this.handleChange}
-              
                 >
                   {renderSuggestion}
                 </select>
                 <label className ="active">
                   <span>{this.state.address}</span>
                 </label>
-                
+                <div className="col-12 form-button">
+                          <a
+                            className="btn btn-prev"
+                            href="/"
+                            onClick={this.props.getBack}
+                          >
+                            Go Back
+                          </a>
+                          <a
+                            className="btn-book btn btn-next"
+                            href="/"
+                            onClick={this.props.next}
+                          >
+                            Order
+                          </a>
+            </div>
               </div>
             </div>
           </div>
@@ -90,4 +103,4 @@ class LocationSearchInput extends React.Component {
     return <div>{optionStore}</div>;
   }
 }
-export default withRouter(LocationSearchInput);
+export default withRouter(LocationSearchStore);

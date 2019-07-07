@@ -44,7 +44,7 @@ const Home = props => (
               </div>
               <div className="content">
                 <h2>Voucher</h2>
-                <NavLink to={`/category`} className="btn-view">
+                <NavLink to={`/promotion`} className="btn-view">
                   See more
                 </NavLink>
               </div>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import Payment from './../../components/Payment/Payment';
-class PaymentPage extends Component {
+class PaymentShipPage extends Component {
     render() {
         return (
-            <div style={{ }}>
+            <div style={{  }}>
 				<Payment />
 			</div>
         )
     }
 }
-export default PaymentPage;
+export default PaymentShipPage;

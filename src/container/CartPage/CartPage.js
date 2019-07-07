@@ -11,8 +11,13 @@ class CartPage extends Component {
       this.props.history.push('/payment')
     }
     else {
-      this.props.cartItemCount?
-      this.props.history.push('/signin') : this.props.history.push('/pizza')
+      if(this.props.cartItemCount){
+        this.props.history.push('/signin')
+      }
+      else{
+        alert('Your cart is empty!');
+        this.props.history.push('/pizza')
+      }
     }
   }
   render() {

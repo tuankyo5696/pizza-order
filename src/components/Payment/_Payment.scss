@@ -46,3 +46,13 @@
         }
     }
 }
+@media(max-width: $breakpoint-sm){
+    .payment-step .bullets-wrapper .bullet{
+        width: 17%;
+        opacity: .5;
+        &.active{
+            width: 66%;
+            opacity: 1;
+        }
+    }
+}

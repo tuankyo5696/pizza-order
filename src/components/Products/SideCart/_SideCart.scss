@@ -327,7 +327,12 @@
         }
     }
 }
-
+@media (max-width: $breakpoint-md - 0.02px){
+    .Module-310  .ModuleContent  .Side-cart  .Booking-details
+    {
+        display: none;
+    }
+}
 @media(min-width: $breakpoint-lg) {
     .col-lg-4 {
         -webkit-box-flex: 0;

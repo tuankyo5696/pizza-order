@@ -14,7 +14,6 @@ export function* fetchPizzaSaga(action) {
         ...response.data[key]
       });
     }
-    console.log(fetchedPizza);
     yield put(actions.fetchPizzaSuccess(fetchedPizza));
   } catch (error) {
     yield put(actions.fetchProductFailed(error));

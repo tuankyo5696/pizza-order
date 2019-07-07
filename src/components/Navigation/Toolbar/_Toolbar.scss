@@ -6,7 +6,7 @@
     width: 100%;
     z-index: 40;
     margin: auto;
-    background-color: $dark-grey;
+    background-color: 	$toolbar;
 
     .container {
         width: 100%;
@@ -15,7 +15,6 @@
         margin-right: auto;
         margin-left: auto;
     }
-
     .row {
         display: flex;
         -ms-flex-wrap: wrap;

@@ -3,14 +3,12 @@
     .Modal{
         position: fixed;
         z-index: 1200;
-        top: 0;
-        left: 24%;
+        top: 5%;
+        left: 5%;
         text-align: center;
         transition: all 0.3s ease-out;
         box-sizing: border-box;
-        width: 100%;
-        margin-bottom: 10px;
-        max-width: 345px;
+        max-width: 290px;
         vertical-align: top;
         background: url('./../../../assets/images/popup_bg_1.png') repeat-y;
         background-size: 100%;
@@ -27,24 +25,46 @@
         -moz-transition: all 0.3s ease-out;
         -ms-transition: all 0.3s ease-out;
         -o-transition: all 0.3s ease-out;
+    }
 }
+
+@media (max-width: $breakpoint-sm){
+    .Modal-Wrapper{
+        .Modal{
+            overflow-y: auto;
+        }
+    }
+    .option-list.popup-option {
+        max-height: 40vh;
+    }
 }
+
 
 @media (min-width: $breakpoint-sm){
     .Modal-Wrapper{
         .Modal{
-            max-width: 32.34375rem;
+            max-width: 32rem;
+            top: 5%;
+            left: 20%;
         }
     }
-
 }
+
+
 @media (min-width: $breakpoint-lg){
     .Modal-Wrapper{
         .Modal{
             max-width: 640px;
             padding: 40px 20px;
-           
+            top: 15%;
+            left: 20%;
         }
     }
+}
 
+@media (min-width: $breakpoint-xl){
+    .Modal-Wrapper .Modal {
+        top: 10%;
+        left: 30%;
+    }
 }
