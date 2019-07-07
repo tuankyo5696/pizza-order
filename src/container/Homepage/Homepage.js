@@ -3,6 +3,8 @@ import Home from "./../../components/Home/Home";
 import axios from "axios";
 import Slider from 'react-slick';
 import BestSellers from './../../components/Products/Pizza/BestSellers/BestSellers';
+import Spinner from './../../components/UI/Spinner/Spinner';
+
 class HomePage extends Component {
   _isMounted = false;
   state = {
@@ -30,11 +32,11 @@ class HomePage extends Component {
     this._isMounted = false;
   }
   render() {
-    const bestSellers = this.state.popular.map(pizza => (
+    const bestSellers = this.state.popular? this.state.popular.map(pizza => (
         <div  key = {pizza._id}> 
           <BestSellers {...pizza}/>
         </div>
-    ))
+    )) : <Spinner />
     const settings = {
       dots: true,
       infinite: true,

@@ -5,6 +5,7 @@ import Pay1 from "./../../../../assets/images/pay1.png";
 import Pay2 from "./../../../../assets/images/pay2.png";
 import Pay3 from "./../../../../assets/images/pay3.png";
 import Pay4 from "./../../../../assets/images/pay4.png";
+import {Field} from 'formik';
 const Step3 = props => {
   return (
     <div>
@@ -25,20 +26,22 @@ const Step3 = props => {
                     <div className="form row">
                       <div className="form-group col-12">
                         <label>Full name</label>
-                        <input
+                        <Field
                           className="form-control"
                           type="text"
-                          name="Address_FirstName"
+                          name="fullname"
+                          value = {props.values.fullname}
                           placeholder="Enter Fullname"
                         />
                       </div>
                       <div className="EmailPhone">
                         <div className="form-group col-6">
                           <label>Email</label>
-                          <input
-                            type="text"
+                          <Field
+                            type="email"
                             className="form-control"
-                            name="Address_Email"
+                            name="email"
+                            value = {props.values.email}
                             placeholder="Enter Email"
                           />
                         </div>
@@ -46,10 +49,11 @@ const Step3 = props => {
                         <div className="form-group col-6">
                           <label>Phone</label>
 
-                          <input
+                          <Field
                             className="form-control"
                             type="text"
-                            name="Address_Phone"
+                            name="phone"
+                            value = {props.values.phone}
                             placeholder="Enter PhoneNumber"
                           />
                         </div>
@@ -83,7 +87,7 @@ const Step3 = props => {
                                   id="1"
                                   value="1"
                                   style={{ display: "none" }}
-                                  checked
+                                  defaultChecked
                                 />
                               </div>
 

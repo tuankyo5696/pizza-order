@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import Geocode from "react-geocode";
-import LocationSearchInput from './../Map/LocationSearchInput';
+import LocationSearchStore from './../Map/LocationSearchStore';
 Geocode.setApiKey( "AIzaSyBp82fdgtmvXSGr7rrgYQZ74db66mXZrHA" );
 Geocode.enableDebug();
 
-class Contact extends Component{
+class ContactStore extends Component{
 
 	constructor( props ){
 		super( props );
@@ -240,7 +240,7 @@ class Contact extends Component{
 						        position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}
 						/>
 						<Marker />
-						<LocationSearchInput changePosition={this.changePosition} />
+                        <LocationSearchStore changePosition={this.changePosition} getBack={this.props.getBack} next={this.props.next}/>
 					</GoogleMap>
 				)
 			)
@@ -269,4 +269,4 @@ class Contact extends Component{
 		return( map )
 	}
 }
-export default Contact;
+export default ContactStore;
