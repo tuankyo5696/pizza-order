@@ -10,7 +10,10 @@ class  BestSellers extends Component{
       name: this.props.name,
       picture: this.props.picture,
       category: this.props.category,
+      wrapper: this.props.wrapper[0],
+      options :  undefined,
       prices: [{
+        _id : this.props.prices[0]._id,
         price: this.props.prices[0].price
       }],
       subName: {

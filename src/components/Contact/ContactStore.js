@@ -240,7 +240,7 @@ class ContactStore extends Component{
 						        position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}
 						/>
 						<Marker />
-                        <LocationSearchStore changePosition={this.changePosition} getBack={this.props.getBack} next={this.props.next}/>
+						<LocationSearchStore changePosition={this.changePosition} getBack={this.props.getBack} next={this.props.next} value={this.props.value}/>
 					</GoogleMap>
 				)
 			)

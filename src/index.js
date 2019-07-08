@@ -8,17 +8,19 @@ import authReducer from "./store/reducers/auth";
 import userReducer from "./store/reducers/user";
 import productsReducer from "./store/reducers/products";
 import shoppingCartReducer from "./store/reducers/shoppingCart";
+import OrdersReducer from "./store/reducers/order";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import createSagaMiddleware from "redux-saga";
-import { watchAuth, watchFetchData } from "./store/sagas";
+import { watchAuth, watchFetchData,watchOrder } from "./store/sagas";
 
 
 const rootReducer = combineReducers({
   auth: authReducer,
   user: userReducer,
   shop: shoppingCartReducer,
-  products: productsReducer
+  products: productsReducer,
+  order: OrdersReducer
 });
 const sagaMiddleware = createSagaMiddleware();
 
@@ -28,6 +30,7 @@ applyMiddleware(sagaMiddleware)
 );
 sagaMiddleware.run(watchAuth);
 sagaMiddleware.run(watchFetchData);
+sagaMiddleware.run(watchOrder);
 const app = (
   <Provider store={store}>
     <BrowserRouter>

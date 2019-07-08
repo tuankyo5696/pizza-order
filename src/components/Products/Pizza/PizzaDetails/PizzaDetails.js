@@ -71,6 +71,7 @@ class PizzaDetails extends Component {
         onSubmit={(values, actions) => {
           let totalPrice = 0;
           let checkPrice = 0;
+          let options = EMPTY_STRING;
           let subName = EMPTY_STRING;
           const sizePrice = JSON.parse(values.radioGroup);
           totalPrice = totalPrice + sizePrice.price;
@@ -80,7 +81,9 @@ class PizzaDetails extends Component {
             const topping = JSON.parse(values.radioGroup3);
             checkPrice = checkPrice + topping.price
             subName = topping;
+            options = topping
           }
+          
           this.setState({
             totalPrice: totalPrice,
             checkPrice: checkPrice,
@@ -90,8 +93,11 @@ class PizzaDetails extends Component {
               _id: this.props.pizza._id,
               category: this.props.pizza.category,
               picture: this.props.pizza.picture,
+              wrapper: values.radioGroup2,
+              options : options ? [options._id]  : undefined,
               prices: [
                 {
+                  _id : sizePrice._id,
                   price: totalPrice
                 }
               ]

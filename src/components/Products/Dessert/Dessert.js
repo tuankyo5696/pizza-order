@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import * as actions from './../../../store/actions/index';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 class Dessert extends Component{
+
   addCart =  e => {
     e.preventDefault();
+    toast("Add to Cart Successfully!")
     this.props.onAddCart({...this.props.dessert})
+  
   }
+
   render() {
     return(
       <div className="col-6 col-md-4 col-lg-6 col-xl-4">

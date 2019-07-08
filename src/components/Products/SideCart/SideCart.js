@@ -28,7 +28,7 @@ const sidecart = props => (
             <p>Total:</p>
           </div>
           <div className="total">
-            <strong>{props.totalPrice} ₫</strong>
+            <strong>{props.totalPrice.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, '$1,')} ₫</strong>
           </div>
           <div className="button-checkout">
             <NavLink to={`/cart`} className="btn btn-checkout">

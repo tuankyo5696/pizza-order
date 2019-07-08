@@ -7,7 +7,7 @@ const Footer = props => (
   <footer className="footer-1">
     <article>
       <div className="container">
-        <div className="row">
+        <div className="row" style={{display:'flex'}}>
           <div className="left-footer merge2">
             <div className="ModuleFooter">
               <ul className="copyright">
@@ -21,7 +21,7 @@ const Footer = props => (
             </div>
           </div>
           <div className="right-footer merge2">
-            <div className="hotline">
+            <div className="hotline" style={{paddingTop:'1rem'}}>
               <p>
                 Hotline<span>Đặt hàng</span>
               </p>

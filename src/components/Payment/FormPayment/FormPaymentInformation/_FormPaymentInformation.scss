@@ -3,6 +3,7 @@
 .coverCheckout {
     padding-top: 10vh;
     background-color: rgba(0, 123, 255, 0.09);
+    padding: 4rem 0;
 }
 
 .EmailPhone {
@@ -30,6 +31,7 @@
     .btn-prev{
         padding-left: 1.4375rem;
         background: #999;
+        margin:1rem 0;
     }
 }
 .checkout .page-title {
@@ -253,4 +255,8 @@ label {
 }
 
 
-@media (min-width:992px) {}
+@media (min-width:992px) {
+    .coverCheckout {
+        padding-bottom: 20rem;
+    }
+}

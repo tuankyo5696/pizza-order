@@ -5,6 +5,9 @@ import Step2 from './FormInformation/FormInformation';
 import Step3 from './FormPaymentInformation/FormPaymentInformation';
 import * as Yup from "yup";
 import { compose, withState, withHandlers } from "recompose";
+import { connect } from 'react-redux';
+import * as actions from './../../../store/actions/index';
+
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const paymentSchema = Yup.object().shape({
   email: Yup.string()
@@ -30,30 +33,41 @@ const enhance = compose(
     }),
     withFormik({
         mapPropsToValues: ({
-          form: { houseNumber, fullname, district, province, phone,shippingAddress,email}
-        }) => ({
+          form: {orderMethod,paymentMethod, houseNumber, fullname, district, province,informationGuide, phone,shippingAddress,email,note,orderLines,idAddress}
+      }) => ({
+          orderMethod,
+          paymentMethod,
           houseNumber,
           district ,
           province,
           fullname,
+          informationGuide,
+          orderLines,
+          idAddress,
           shippingAddress,
           phone,
-          email
+          email,
+          note
         }),
-        handleSubmit(values, { props, setErrors, setSubmitting }) {
+      handleSubmit(values, { props, setErrors, setSubmitting }) {
+        let orderData = {
+          payment: values.paymentMethod,
+          orderLines: values.orderLines,
+          shippingAddress: values.idAddress,
+          orderMethod: values.orderMethod,
+          name: values.fullname,
+          email: values.email,
+          phone: values.phone,
+          note: values.note ?  values.note : undefined
+        }
+        console.log(orderData)
+        props.onSendOrder(orderData);
+        props.onRemoveCart();
           setTimeout(() => {
-            console.log(values)
+
           }, 100);
         },
         validationSchema : paymentSchema
-        // validate: values => {
-        //   let errors = {};
-        //   if (!values.fullname) {
-        //     errors.fullname = "Full Name is Required";
-        //   }
-    
-        //   return errors;
-        // }
   
       })
 )
@@ -66,4 +80,15 @@ const FormPayment = ({ handleSubmit, step, nextStep, prevStep, ...props }) => (
       }[step] || <div />}
     </form>
 );
-export default (enhance(FormPayment))
+const mapStateToProps = state => {
+  return {
+
+  }
+}
+const mapDispatchToProps = dispatch =>{
+  return {
+    onSendOrder: (orderData) => dispatch(actions.purchaseOrder(orderData)),
+    onRemoveCart: () => dispatch(actions.removeAllCart())
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps) (enhance(FormPayment))

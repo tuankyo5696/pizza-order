@@ -9,6 +9,7 @@ export function* logoutSaga(action) {
   yield call([localStorage, "removeItem"], "expirationDate");
   yield call([localStorage, "removeItem"], "userId");
   yield call([localStorage, "removeItem"], "auth");
+  yield call([localStorage, "removeItem"], "JWTtoken");
   yield put(actions.logoutSucceed());
 }
 
@@ -48,11 +49,12 @@ export function* authUserSaga(action) {
     let decoded = jwtDecode(token);
     const expirationDate = yield new Date(new Date().getTime() + decoded.exp);
     console.log(decoded)
-    let idToken = decoded.id;
+    let idToken = decoded._id;
+    yield localStorage.setItem("JWTtoken",token)
     yield localStorage.setItem("token", idToken);
     yield localStorage.setItem("expirationDate", expirationDate);
     yield localStorage.setItem("userId", decoded._id);
-    yield localStorage.setItem("auth", decoded);
+    yield localStorage.setItem("auth", JSON.stringify(decoded));
     yield put(actions.authSuccess(idToken, decoded._id,decoded));
   } catch (error) {
     yield put(actions.authFail(error));

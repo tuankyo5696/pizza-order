@@ -58,6 +58,12 @@
     }
 }
 
+
+.stepdelivery{
+    display: flex;
+    align-items: center;
+}
+
 @media (min-width: $breakpoint-sm) {
     .page-content .method {
         max-width: 30.47rem;
@@ -114,6 +120,7 @@
             margin-bottom: 1.375rem;
         }
     }
+
 }
 @media (max-width: $breakpoint-sm){
     .page-content{

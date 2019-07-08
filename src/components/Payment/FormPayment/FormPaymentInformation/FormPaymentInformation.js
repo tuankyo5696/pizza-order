@@ -76,11 +76,13 @@ const Step3 = props => {
                       <div className="form-group col-12">
                         <label>Order Note</label>
 
-                        <textarea
+                        <Field 
+                          component= "textarea"
                           className="form-control"
-                          name="OrderNote"
+                          name="note"
                           cols="30"
                           rows="2"
+                          value= {props.values.note}
                         />
                       </div>
 
@@ -94,13 +96,13 @@ const Step3 = props => {
                                 <img alt="" src={Pay1} />
                               </div>
 
-                              <div className="radio">
+                              <div>
                                 <input
                                   type="radio"
                                   name="PaymentMethod"
                                   id="1"
                                   value="1"
-                                  style={{ display: "none" }}
+                                 
                                   defaultChecked
                                 />
                               </div>
@@ -113,7 +115,7 @@ const Step3 = props => {
                                 <img alt="" src={Pay2} />
                               </div>
 
-                              <div className="radio">
+                              <div >
                                 <input
                                   type="radio"
                                   name="PaymentMethod"
@@ -131,7 +133,7 @@ const Step3 = props => {
                                 <img alt="" src={Pay3} />
                               </div>
 
-                              <div className="radio">
+                              <div >
                                 <input
                                   type="radio"
                                   name="PaymentMethod"
@@ -149,7 +151,7 @@ const Step3 = props => {
                                 <img alt="" src={Pay4} />
                               </div>
 
-                              <div className="radio">
+                              <div >
                                 <input
                                   type="radio"
                                   name="PaymentMethod"
@@ -168,7 +170,6 @@ const Step3 = props => {
                           <input
                             id="PaymentAgree"
                             type="checkbox"
-                            style={{ display: "none" }}
                             defaultChecked
                             name="PaymentAgree"
                           />

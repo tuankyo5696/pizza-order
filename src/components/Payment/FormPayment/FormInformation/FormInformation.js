@@ -4,6 +4,7 @@ import {TPHCM,HANOI} from './../../../../constants/staticdata';
 import Navbar from "./../../NavbarPayment/Navbar";
 import {Field} from 'formik';
 import { EMPTY_STRING } from "../../../../constants/helper";
+import axios from 'axios';
 class Step2 extends Component {
   state = {
     infoHouseNumber: false,
@@ -37,6 +38,18 @@ class Step2 extends Component {
   next = e => {
     e.preventDefault();
     this.props.nextStep();
+    let address =
+    {
+      houseNumber: this.props.values.houseNumber,
+      street: this.props.values.shippingAddress,
+      dictrict: this.props.values.district,
+      province: this.props.values.province,
+      informationGuider: this.props.values.informationGuider
+    }
+    let tokenStr = localStorage.getItem("JWTtoken")
+    axios.post("https://cors-anywhere.herokuapp.com/https://pizza-ordering-api.herokuapp.com/shippingaddress", address, { headers: { "Authorization": `Bearer ${tokenStr}` } })
+      .then(response => localStorage.setItem('idShipDelievery',response.data._id))
+      .catch(error => console.log(error))
   };
 
   render() {
@@ -187,10 +200,11 @@ class Step2 extends Component {
                         )}
                       </div>
 
-                      <input
+                      <Field
                         className="form-control"
                         type="text"
-                        name="Address_FullAddress"
+                        name="informationGuide"
+                        value = {values.informationGuide}
                       />
                     </div>
                     <div className="col-12 form-button">
