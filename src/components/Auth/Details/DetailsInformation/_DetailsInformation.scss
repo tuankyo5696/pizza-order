@@ -1,0 +1,70 @@
+@import './../../../../styles/styles.scss';
+
+.user-page {
+    padding: 60px 0;
+    .postname {
+        color: #033a56;
+        margin-bottom: 1rem;
+        padding-top: 3rem;
+        text-align: center;
+        font-size: 1.7rem;
+    }
+    .account-info {
+        border-radius: 5px;
+        padding: 32px;
+        background: url('./../../../../assets/images/woodbg.png');
+        background-size: cover;
+        border: 1px solid #cccccc;
+        .posttitle {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+        }
+        .account-form {
+            max-width: 480px;
+            margin: auto;
+            .form-group {
+                margin-bottom: 1rem;
+                label {
+                    color:white;
+                }
+            }
+        }
+    }
+    
+}
+.label {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    -o-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+
+.flex-wrap {
+    -ms-flex-wrap: wrap!important;
+    flex-wrap: wrap!important;
+}
+
+@media (min-width: $breakpoint-md){
+    .user-page .postname {
+        padding-top: 5rem;
+    }
+}

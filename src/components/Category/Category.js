@@ -10,7 +10,7 @@ const category = props => (
     <article>
       <div className="row no-gutters">
         <NavLink to= {`/pizza`} className="col-lg-6 menu-item bg-img1" bg-img={Pizza} >
-          <h2>Pizza</h2>
+          <h2 >Pizza</h2>
           <div to={`/pizza`} className="btn-view">
             See more
           </div>

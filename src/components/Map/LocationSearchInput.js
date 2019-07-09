@@ -1,10 +1,12 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { EMPTY_STRING } from "../../constants/helper";
-import './_Contact.scss';
+import "./_Contact.scss";
 class LocationSearchInput extends React.Component {
   state = {
-    address: localStorage.getItem('address') ? localStorage.getItem('address') : EMPTY_STRING,
+    address: localStorage.getItem("address")
+      ? localStorage.getItem("address")
+      : EMPTY_STRING,
     suggestion: [
       {
         name: "Select Store",
@@ -44,14 +46,13 @@ class LocationSearchInput extends React.Component {
       }
     ]
   };
-  handleChange = e => { 
+  handleChange = e => {
     let obj = JSON.parse(e.target.value);
     this.props.changePosition(obj.latLng);
-    localStorage.setItem('address',obj.name);
-    
+    localStorage.setItem("address", obj.name);
     this.setState({
       address: obj.name
-    })
+    });
   };
 
   render() {
@@ -72,14 +73,12 @@ class LocationSearchInput extends React.Component {
                 <select
                   className="form-control custom-select"
                   onChange={this.handleChange}
-              
                 >
                   {renderSuggestion}
                 </select>
-                <label className ="active">
+                <label className="active">
                   <span>{this.state.address}</span>
                 </label>
-                
               </div>
             </div>
           </div>

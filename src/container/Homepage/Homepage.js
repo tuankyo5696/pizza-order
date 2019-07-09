@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Home from "./../../components/Home/Home";
 import axios from "axios";
-import Slider from 'react-slick';
-import BestSellers from './../../components/Products/Pizza/BestSellers/BestSellers';
-import Spinner from './../../components/UI/Spinner/Spinner';
+import Slider from "react-slick";
+import BestSellers from "./../../components/Products/Pizza/BestSellers/BestSellers";
+import Spinner from "./../../components/UI/Spinner/Spinner";
 
 class HomePage extends Component {
   _isMounted = false;
@@ -18,25 +18,27 @@ class HomePage extends Component {
         "https://cors-anywhere.herokuapp.com/https://pizza-ordering-api.herokuapp.com/products/popular"
       )
       .then(response => {
-        if(this._isMounted){
+        if (this._isMounted) {
           this.setState({ popular: response.data });
         }
-      
-
       })
       .catch(error => {
         this.setState({ error: true });
       });
   }
-  componentWillUnmount(){
+  componentWillUnmount() {
     this._isMounted = false;
   }
   render() {
-    const bestSellers = this.state.popular? this.state.popular.map(pizza => (
-        <div  key = {pizza._id}> 
-          <BestSellers {...pizza}/>
+    const bestSellers = this.state.popular ? (
+      this.state.popular.map(pizza => (
+        <div key={pizza._id}>
+          <BestSellers {...pizza} />
         </div>
-    )) : <Spinner />
+      ))
+    ) : (
+      <Spinner />
+    );
     const settings = {
       dots: true,
       infinite: true,
@@ -49,11 +51,8 @@ class HomePage extends Component {
     return (
       <div>
         <Home />
-        <Slider {...settings}>
-        {bestSellers}
-      </Slider>
+        <Slider {...settings}>{bestSellers}</Slider>
       </div>
-      
     );
   }
 }

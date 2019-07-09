@@ -13,7 +13,11 @@ export const removeToCart = productId => {
     payload: productId
   };
 };
-
+export const removeAllCart = () => {
+  return {
+    type: type.REMOVE_ALL_CART
+  }
+}
 export const incrementCartQuantity = productId => {
   return{
     type: type.INCREMENT_CART_ITEM_QUANTITY,

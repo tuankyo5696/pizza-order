@@ -32,7 +32,7 @@ export function* fetchDrinksSaga(action) {
         ...response.data[key]
       });
     }
-    console.log(fetchDrinks);
+  
     yield put(actions.fetchDrinksSuccess(fetchDrinks));
   } catch (error) {
     yield put(actions.fetchProductFailed(error));
@@ -50,7 +50,7 @@ export function* fetchSidesSaga(action) {
         ...response.data[key]
       });
     }
-    console.log(fetchSides);
+   
     yield put(actions.fetchSidesSuccess(fetchSides));
   } catch (error) {
     yield put(actions.fetchProductFailed(error));
@@ -68,7 +68,7 @@ export function* fetchDessertSaga(action) {
         ...response.data[key]
       });
     }
-    console.log(fetchDessert);
+   
     yield put(actions.fetchDessertSuccess(fetchDessert));
   } catch (error) {
     yield put(actions.fetchProductFailed(error));

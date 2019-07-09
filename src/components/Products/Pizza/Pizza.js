@@ -35,16 +35,15 @@ class Pizza extends Component {
                   src={this.props.pizza.picture}
                   alt={this.props.pizza.name}
                 />
+              </div>
+              <figcaption>
+                <h4>{this.props.pizza.name}</h4>
+                <p> {this.props.pizza.description}</p>
+                <div className="btn-addcart">
+                  Add To Cart
+                  <span className="lnr lnr-arrow-right" />
                 </div>
-                <figcaption>
-                  <h4>{this.props.pizza.name}</h4>
-                  <p> {this.props.pizza.description}</p>
-                  <div className="btn-addcart">
-                    Add To Cart
-                    <span className="lnr lnr-arrow-right" />
-                  </div>
-                </figcaption>
-              
+              </figcaption>
             </figure>
           </a>
         </div>

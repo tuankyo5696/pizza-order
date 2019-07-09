@@ -45,6 +45,9 @@ const reducer = (state = initialState, action) => {
       decrementedItem.quantity--;
       updatedCart[updatedItemIndex] = decrementedItem;
       return { ...state, cart: updatedCart }
+    case actionTypes.REMOVE_ALL_CART:
+      updatedCart = [];
+        return {...state,cart: updatedCart}
     default:
       return state;
   }

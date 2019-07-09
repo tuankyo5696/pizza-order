@@ -5,6 +5,9 @@ import HomePage from "./container/Homepage/Homepage";
 import CategoryPage from "./container/Categorypage/Categorypage";
 import SignUpPage from "./container/AuthPage/SignUpPage/SignUpPage";
 import SignInPage from "./container/AuthPage/SignInPage/SignInPage";
+import DetailsAuthPage from "./container/AuthPage/DetailsAuth/DetailsAuthPage";
+import DetailsInformationPage from "./container/AuthPage/DetailsInfomation/DetailsInformationPage";
+import ChangePasswordPage from "./container/AuthPage/ChangePassword/ChangePasswordPage";
 import PizzaPage from "./container/ProductsPage/PizzaPage/PizzaPage";
 import DrinksPage from "./container/ProductsPage/DrinksPage/DrinksPage";
 import SidesPage from "./container/ProductsPage/SidesPage/SidesPage";
@@ -37,6 +40,9 @@ class App extends Component {
             <Route path="/payment" component={PaymentShipPage} />
             <Route path="/contact" component={ContactPage} />
             <Route path="/payment-store" component={PaymentStorePage} />
+            <Route path="/auth-details" component={DetailsAuthPage} />
+            <Route path="/auth-details-info" component={DetailsInformationPage} />
+            <Route path="/change-pass" component={ChangePasswordPage} />
           </Switch>
         </Layout>
       </div>

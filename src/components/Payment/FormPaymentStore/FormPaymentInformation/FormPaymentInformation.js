@@ -5,7 +5,13 @@ import Pay1 from "./../../../../assets/images/pay1.png";
 import Pay2 from "./../../../../assets/images/pay2.png";
 import Pay3 from "./../../../../assets/images/pay3.png";
 import Pay4 from "./../../../../assets/images/pay4.png";
+import { Field } from "formik";
+import { EMPTY_STRING } from "../../../../constants/helper";
 const Step3 = props => {
+  const getBack = e => {
+    e.preventDefault();
+    props.prevStep();
+  };
   return (
     <div>
       <Navbar active1={false} active2={false} active3={true} />
@@ -25,44 +31,64 @@ const Step3 = props => {
                     <div className="form row">
                       <div className="form-group col-12">
                         <label>Full name</label>
-                        <input
+                        <Field
                           className="form-control"
                           type="text"
-                          name="Address_FirstName"
+                          name="fullname"
+                          value={props.values.fullname}
                           placeholder="Enter Fullname"
                         />
+                        {props.errors.fullname && props.touched.fullname ? (
+                          <div className="Invalid">{props.errors.fullname}</div>
+                        ) : (
+                          EMPTY_STRING
+                        )}
                       </div>
                       <div className="EmailPhone">
                         <div className="form-group col-6">
                           <label>Email</label>
-                          <input
-                            type="text"
+                          <Field
+                            type="email"
                             className="form-control"
-                            name="Address_Email"
+                            name="email"
+                            value={props.values.email}
                             placeholder="Enter Email"
                           />
+                          {props.errors.email && props.touched.email ? (
+                            <div className="Invalid">{props.errors.email}</div>
+                          ) : (
+                            EMPTY_STRING
+                          )}
                         </div>
 
                         <div className="form-group col-6">
                           <label>Phone</label>
 
-                          <input
+                          <Field
                             className="form-control"
                             type="text"
-                            name="Address_Phone"
+                            name="phone"
+                            value={props.values.phone}
                             placeholder="Enter PhoneNumber"
                           />
+                          {props.errors.phone && props.touched.phone ? (
+                            <div className="Invalid">{props.errors.phone}</div>
+                          ) : (
+                            EMPTY_STRING
+                          )}
                         </div>
                       </div>
 
                       <div className="form-group col-12">
                         <label>Order Note</label>
 
-                        <textarea
+                        <Field
+                          component="textarea"
                           className="form-control"
-                          name="OrderNote"
+                          name="note"
                           cols="30"
                           rows="2"
+                          value={props.values.note}
                         />
                       </div>
 
@@ -76,13 +102,12 @@ const Step3 = props => {
                                 <img alt="" src={Pay1} />
                               </div>
 
-                              <div className="radio">
+                              <div>
                                 <input
                                   type="radio"
                                   name="PaymentMethod"
                                   id="1"
                                   value="1"
-                                  style={{ display: "none" }}
                                   defaultChecked
                                 />
                               </div>
@@ -95,7 +120,7 @@ const Step3 = props => {
                                 <img alt="" src={Pay2} />
                               </div>
 
-                              <div className="radio">
+                              <div>
                                 <input
                                   type="radio"
                                   name="PaymentMethod"
@@ -113,7 +138,7 @@ const Step3 = props => {
                                 <img alt="" src={Pay3} />
                               </div>
 
-                              <div className="radio">
+                              <div>
                                 <input
                                   type="radio"
                                   name="PaymentMethod"
@@ -131,7 +156,7 @@ const Step3 = props => {
                                 <img alt="" src={Pay4} />
                               </div>
 
-                              <div className="radio">
+                              <div>
                                 <input
                                   type="radio"
                                   name="PaymentMethod"
@@ -150,7 +175,6 @@ const Step3 = props => {
                           <input
                             id="PaymentAgree"
                             type="checkbox"
-                            style={{ display: "none" }}
                             defaultChecked
                             name="PaymentAgree"
                           />
@@ -164,6 +188,13 @@ const Step3 = props => {
                           <p>Thank you for ordering at Pyco's Pizza Vietnam.</p>
                         </div>
                         <div className="form-group col-12">
+                          <a
+                            className="btn btn-prev"
+                            href="/"
+                            onClick={getBack}
+                          >
+                            Go Back
+                          </a>
                           <button
                             className="btn-book btn btn-next"
                             type="submit"

@@ -42,7 +42,7 @@ class PizzaPage extends Component {
                         <li>
                           <img src={MediumIcon} alt="" />
                           <span className="price-medium">
-                            Large :<strong> 199.000 </strong>
+                            Medium :<strong> 199.000 </strong>
                           </span>
                         </li>
                       </ul>

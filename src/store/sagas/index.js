@@ -16,6 +16,7 @@ import {
   fetchDrinksSaga,
   fetchSidesSaga
 } from "./products";
+import { fetchOrderSaga, purchaseOrderSaga } from "./order";
 export function* watchAuth() {
   yield all([
     takeEvery(actionTypes.AUTH_REGISTER, registerSaga),
@@ -31,5 +32,11 @@ export function* watchFetchData() {
     takeEvery(actionTypes.FETCH_DRINKS, fetchDrinksSaga),
     takeEvery(actionTypes.FETCH_DESSERT, fetchDessertSaga),
     takeEvery(actionTypes.FETCH_SIDES, fetchSidesSaga)
+  ]);
+}
+export function* watchOrder() {
+  yield all([
+    takeEvery(actionTypes.FETCH_ORDER, fetchOrderSaga),
+    takeEvery(actionTypes.PURCHASE_ORDER, purchaseOrderSaga)
   ]);
 }

@@ -1,10 +1,12 @@
-import React,{Component} from "react";
+import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { EMPTY_STRING } from "../../constants/helper";
-import './_Contact.scss';
+import "./_Contact.scss";
 class LocationSearchStore extends Component {
   state = {
-    address: localStorage.getItem('address') ? localStorage.getItem('address') : EMPTY_STRING,
+    address: localStorage.getItem("address")
+      ? localStorage.getItem("address")
+      : EMPTY_STRING,
     suggestion: [
       {
         name: "Select Store",
@@ -15,6 +17,7 @@ class LocationSearchStore extends Component {
       },
       {
         name: "203 Nguyễn Văn Tạo, Nhà Bè, Hồ Chí Minh, Việt Nam",
+        _id: "5d2199e73b58c72688ffda1b",
         latLng: {
           lat: 10.6542726,
           lng: 106.72904949999997
@@ -22,6 +25,7 @@ class LocationSearchStore extends Component {
       },
       {
         name: "Etown Đường Ấp Bắc, Tân Bình, Hồ Chí Minh, Việt Nam",
+        _id: "5d21a4223b58c72688ffda1c",
         latLng: {
           lat: 10.800994,
           lng: 106.64149759999998
@@ -30,6 +34,7 @@ class LocationSearchStore extends Component {
       {
         name:
           " ETown Floor 2 Cộng Hòa, phường 13, Tân Bình, Hồ Chí Minh, Việt Nam",
+        _id: "5d21a47a3b58c72688ffda1d",
         latLng: {
           lat: 10.8020047,
           lng: 106.6413804
@@ -37,6 +42,7 @@ class LocationSearchStore extends Component {
       },
       {
         name: "Nguyễn Văn Luông Quận 6, Hồ Chí Minh, Việt Nam",
+        _id: "5d21a47a3b58c72688ffda1d",
         latLng: {
           lat: 10.7434224,
           lng: 106.63468290000003
@@ -44,13 +50,14 @@ class LocationSearchStore extends Component {
       }
     ]
   };
-  handleChange = e => { 
+  handleChange = e => {
     let obj = JSON.parse(e.target.value);
     this.props.changePosition(obj.latLng);
-    localStorage.setItem('address',obj.name);
+    localStorage.setItem("address", obj.name);
+    localStorage.setItem("idAddress", obj._id);
     this.setState({
       address: obj.name
-    })
+    });
   };
 
   render() {
@@ -71,28 +78,29 @@ class LocationSearchStore extends Component {
                 <select
                   className="form-control custom-select"
                   onChange={this.handleChange}
+                  value={this.props.value}
                 >
                   {renderSuggestion}
                 </select>
-                <label className ="active">
+                <label className="active">
                   <span>{this.state.address}</span>
                 </label>
                 <div className="col-12 form-button">
-                          <a
-                            className="btn btn-prev"
-                            href="/"
-                            onClick={this.props.getBack}
-                          >
-                            Go Back
-                          </a>
-                          <a
-                            className="btn-book btn btn-next"
-                            href="/"
-                            onClick={this.props.next}
-                          >
-                            Order
-                          </a>
-            </div>
+                  <a
+                    className="btn btn-prev"
+                    href="/"
+                    onClick={this.props.getBack}
+                  >
+                    Go Back
+                  </a>
+                  <a
+                    className="btn-book btn btn-next"
+                    href="/"
+                    onClick={this.props.next}
+                  >
+                    Order
+                  </a>
+                </div>
               </div>
             </div>
           </div>

@@ -8,18 +8,17 @@ class CartPage extends Component {
   purchaseHandler = e => {
     e.preventDefault();
     if (this.props.isAuthenticated) {
-      this.props.history.push('/payment')
-    }
-    else {
-      if(this.props.cartItemCount){
-        this.props.history.push('/signin')
+      localStorage.setItem("cart", JSON.stringify(this.props.cartItems));
+      if (this.props.cartItemCount) {
+        this.props.history.push("/payment");
+      } else {
+        alert("Your cart is empty!");
+        this.props.history.push("/pizza");
       }
-      else{
-        alert('Your cart is empty!');
-        this.props.history.push('/pizza')
-      }
+    } else {
+      this.props.history.push("/signin");
     }
-  }
+  };
   render() {
     return (
       <div className="menu-cart">
@@ -51,7 +50,11 @@ class CartPage extends Component {
                     <strong>{this.props.totalPrice} ₫</strong>
                   </div>
                   <div className="button-checkout">
-                    <a className="btn btn-checkout" href="/" onClick={this.purchaseHandler}>
+                    <a
+                      className="btn btn-checkout"
+                      href="/"
+                      onClick={this.purchaseHandler}
+                    >
                       Checkout
                     </a>
                   </div>
@@ -72,7 +75,17 @@ const mapStateToProps = state => {
       return count + curItem.quantity;
     }, 0),
     totalPrice: state.shop.cart.reduce((count, curItem) => {
-      return count + curItem.prices[0].price * curItem.quantity;
+      let total = count;
+      if (curItem.category.name === "Pizzas") {
+        total = curItem.subName.price
+          ? total +
+            curItem.prices[0].price * curItem.quantity +
+            curItem.subName.price
+          : total + curItem.prices[0].price * curItem.quantity;
+      } else {
+        total = total + curItem.prices[0].price * curItem.quantity;
+      }
+      return total;
     }, 0)
   };
 };
