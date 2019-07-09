@@ -16,12 +16,10 @@ const fetchOrderFailed = (state, action) => {
 };
   
 const fetchOrderSuccess = (state, action) => {
-    console.log(action.orders)
     const object = updateObject(state, {
         orders: action.orders,
       loading: false
     });
-    console.log(object);
     return object;
 };
 const purchaseOrderStart = ( state, action ) => {

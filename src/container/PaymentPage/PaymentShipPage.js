@@ -9,7 +9,6 @@ class PaymentShipPage extends Component {
     this.props.onPurchaseOrder()
   }
   render() {
-    console.log(this.props.orders)
     let paymentShip = this.props.cartItemCount ? (
       <div style={{}}>
         <Payment

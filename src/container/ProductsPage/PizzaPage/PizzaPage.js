@@ -12,6 +12,7 @@ import "./_PizzaPage.scss";
 class PizzaPage extends Component {
   componentDidMount() {
     this.props.onFetchPizza();
+    this.props.onPurchaseOrder();
   }
   render() {
     let pizzas = <Spinner />;
@@ -69,7 +70,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchPizza: () => dispatch(actions.fetchPizza())
+    onFetchPizza: () => dispatch(actions.fetchPizza()),
+    onPurchaseOrder: () => dispatch(actions.purchaseOrderStart())
   };
 };
 export default connect(
