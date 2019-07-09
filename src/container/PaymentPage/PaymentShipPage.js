@@ -13,6 +13,7 @@ class PaymentShipPage extends Component {
         <Payment
           cart={this.props.cartItems}
           totalPrice={this.props.totalPrice}
+          orders = {this.props.orders[this.props.orders.length -1]}
         />
       </div>
     ) : (
@@ -27,7 +28,7 @@ class PaymentShipPage extends Component {
 }
 const mapStateToProps = state => {
   return {
-    orders: state.order.orders,
+    orders: state.orders.orders,
     cartItems: state.shop.cart,
     cartItemCount: state.shop.cart.reduce((count, curItem) => {
       return count + curItem.quantity;
@@ -45,12 +46,13 @@ const mapStateToProps = state => {
       }
       return total;
     }, 0),
-    loading: state.order.loading
+    loading: state.orders.loading
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchOrder: () => dispatch(actions.fetchOrder())
+    onFetchOrder: () => dispatch(actions.fetchOrder()),
+    onPurchaseOrder: () => dispatch(actions.purchaseOrderStart())
   };
 };
 export default connect(

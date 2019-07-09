@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   shop: shoppingCartReducer,
   products: productsReducer,
-  order: OrdersReducer
+  orders: OrdersReducer
 });
 const sagaMiddleware = createSagaMiddleware();
 

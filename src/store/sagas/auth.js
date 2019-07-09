@@ -10,6 +10,9 @@ export function* logoutSaga(action) {
   yield call([localStorage, "removeItem"], "userId");
   yield call([localStorage, "removeItem"], "auth");
   yield call([localStorage, "removeItem"], "JWTtoken");
+  yield call([localStorage, "removeItem"], "orders");
+  yield call([localStorage, "removeItem"], "idShipDelievery");
+  yield call([localStorage, "removeItem"], "idAddress");
   yield put(actions.logoutSucceed());
 }
 

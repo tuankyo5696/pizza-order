@@ -417,35 +417,7 @@
             }
         }
 
-        &:before {
-            content: '';
-            background: url(./../../../assets/images/side_cart_icon.png) no-repeat;
-            background-size: cover;
-            background-position: center;
-            height: 9px;
-            width: 100%;
-            position: absolute;
-            top: -9px;
-            left: 0;
-        }
-
-        &:after {
-            content: '';
-            background: url(./../../../assets/images/side_cart_icon.png) no-repeat;
-            ;
-            background-size: cover;
-            background-position: center;
-            height: 9px;
-            width: 100%;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            -webkit-transform: rotate(180deg);
-            -ms-transform: rotate(180deg);
-            transform: rotate(180deg);
-            -moz-transform: rotate(180deg);
-            -o-transform: rotate(180deg);
-        }
+    
 
         .Booking-table {
             overflow-y: scroll;

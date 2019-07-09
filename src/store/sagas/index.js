@@ -16,10 +16,7 @@ import {
   fetchDrinksSaga,
   fetchSidesSaga
 } from "./products";
-import {
-  fetchOrderSaga,
-  purchaseOrderSaga
-} from "./order"
+import { fetchOrderSaga, purchaseOrderSaga } from "./order";
 export function* watchAuth() {
   yield all([
     takeEvery(actionTypes.AUTH_REGISTER, registerSaga),
@@ -40,7 +37,6 @@ export function* watchFetchData() {
 export function* watchOrder() {
   yield all([
     takeEvery(actionTypes.FETCH_ORDER, fetchOrderSaga),
-    takeEvery(actionTypes.PURCHASE_ORDER,purchaseOrderSaga)
-    
-  ])
+    takeEvery(actionTypes.PURCHASE_ORDER, purchaseOrderSaga)
+  ]);
 }

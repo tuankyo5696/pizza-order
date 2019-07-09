@@ -7,7 +7,8 @@ import * as Yup from "yup";
 import { compose, withState, withHandlers } from "recompose";
 import { connect } from 'react-redux';
 import * as actions from './../../../store/actions/index';
-
+import Spinner from './../../UI/Spinner/Spinner';
+import { EMPTY_STRING } from '../../../constants/helper';
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const paymentSchema = Yup.object().shape({
   email: Yup.string()
@@ -25,6 +26,7 @@ const paymentSchema = Yup.object().shape({
     .min(2,"Too short")
     .required("HouseNumber is required")
 });
+let redirect = EMPTY_STRING
 const enhance = compose(
     withState("step","setStep",1),
     withHandlers({
@@ -60,29 +62,44 @@ const enhance = compose(
           phone: values.phone,
           note: values.note ?  values.note : undefined
         }
+        redirect = <Spinner />
         console.log(orderData)
-        props.onSendOrder(orderData);
-        props.onRemoveCart();
           setTimeout(() => {
-
+            props.onSendOrder(orderData);
+            setSubmitting(false);
           }, 100);
         },
         validationSchema : paymentSchema
   
       })
 )
-const FormPayment = ({ handleSubmit, step, nextStep, prevStep, ...props }) => (
+const FormPayment = ({ handleSubmit, step, nextStep, prevStep, ...props }) => {
+  if (props.purchase) {
+    alert('Order Successfully')
+    props.onRemoveCart()
+    redirect = EMPTY_STRING
+  }
+  return (
+  <>
+   
     <form onSubmit={handleSubmit}>
-      {{
-      1: <Step1 nextStep={nextStep} {...props} />,
-      2: <Step2 nextStep={nextStep} prevStep={prevStep} {...props} />,
-      3: <Step3 prevStep = {prevStep}{...props} />
-      }[step] || <div />}
-    </form>
-);
+    {{
+    1: <Step1 nextStep={nextStep} {...props} />,
+    2: <Step2 nextStep={nextStep} prevStep={prevStep} {...props} />,
+    3: <Step3 prevStep = {prevStep}{...props} />
+    }[step] || <div />}
+      </form>
+      {redirect}
+     </>
+     
+  )
+}
+   
+
 const mapStateToProps = state => {
   return {
-
+    purchase: state.orders.purchased,
+    order: state.orders.orders
   }
 }
 const mapDispatchToProps = dispatch =>{

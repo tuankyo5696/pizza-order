@@ -4,7 +4,9 @@
     padding-top: 7rem;
     min-height: 93vh;
 }
-
+.preview-cart .ModuleContent .Side-cart .Booking-table{
+    min-height: 400px;
+}
 .preview-cart {
     padding: 40px 0;
 
@@ -23,7 +25,7 @@
 
             .cart-checkout-mobile {
                 background: #fff;
-                position: initial;
+                position: sticky;
                 -webkit-box-shadow: none;
                 box-shadow: none;
                 padding: 0;
@@ -302,7 +304,7 @@
         text-transform: uppercase;
         padding-left: 20px;
     }
-    .preview-cart >.Side-cart .Booking-table{
+    .preview-cart .ModuleContent .Side-cart .Booking-table{
         min-height: 500px;
     }
     .preview-cart .Side-cart .Booking-table .product {
@@ -373,6 +375,10 @@
             margin-right: 175px;
             padding-right: 40px;
             font-weight: 700;
+        }
+        h4{
+            position: relative;
+            left: 60%
         }
     }
     .Side-cart {

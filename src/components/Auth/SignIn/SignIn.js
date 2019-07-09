@@ -4,22 +4,21 @@ import { EMPTY_STRING } from "./../../../constants/helper";
 import * as Yup from "yup";
 import "./_Signin.scss";
 import { connect } from "react-redux";
-import { withRouter,Redirect } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import * as actions from "./../../../store/actions/index";
-import Spinner from './../../../components/UI/Spinner/Spinner';
+import Spinner from "./../../../components/UI/Spinner/Spinner";
 
 class SignIn extends Component {
   state = {
-    spinner : EMPTY_STRING
-  }
+    spinner: EMPTY_STRING
+  };
   submitHandler = account => {
-      this.setState({spinner : <Spinner /> })
-      this.props.onAuth(account.email, account.password, !this.props.isSignup);
-    }
-   
+    this.setState({ spinner: <Spinner /> });
+    this.props.onAuth(account.email, account.password, !this.props.isSignup);
+  };
 
   render() {
-    const {spinner} =this.state
+    const { spinner } = this.state;
     const signInSchema = Yup.object().shape({
       email: Yup.string()
         .email("Invalid Email")
@@ -30,15 +29,18 @@ class SignIn extends Component {
         .required("Password is required")
     });
     let errorMessage = EMPTY_STRING;
-    if ( this.props.error ) {
+    if (this.props.error) {
       errorMessage = (
-          <p className ="errorMessage" >Username or Password is wrong!</p>
+        <p className="errorMessage">Username or Password is wrong!</p>
       );
-  }
+    }
     let authRedirect = EMPTY_STRING;
     if (this.props.isAuthenticated) {
-      authRedirect = !this.props.cartItemCount?
-       <Redirect to={'/'} /> : <Redirect to = {'/payment'}/>
+      authRedirect = !this.props.cartItemCount ? (
+        <Redirect to={"/"} />
+      ) : (
+        <Redirect to={"/payment"} />
+      );
     }
     return (
       <div>
@@ -58,80 +60,77 @@ class SignIn extends Component {
         >
           {({ errors, touched }) => (
             <>
-            <section className="Register LoginSection">
-              <div className="coverSignUp">
-                <div className="container">
-                  <div className="row">
-                    <div className="col">
-                      <h2 className="headtitle">Login</h2>
-                      <Form>
-                        <div className="form">
-                          <div className="form-horizontal">
-                            <div className="form-group clearfix">
-                              <label>Email</label>
-                              <div>
-                                <Field
-                                  name="email"
-                                  type="email"
-                                  maxLength="100"
-                                  tabIndex="10"
-                                  className="form-control"
-                                />
-                                {errors.email && touched.email ? (
-                                  <div className="Invalid">{errors.email}</div>
-                                ) : (
-                                  EMPTY_STRING
-                                )}
-                              </div>
-                            </div>
-                            <div className="form-group clearfix">
-                              <label>Password</label>
-                              <div>
-                                <span style={{ whiteSpace: "normal" }}>
+              <section className="Register LoginSection">
+                <div className="coverSignUp">
+                  <div className="container">
+                    <div className="row">
+                      <div className="col">
+                        <h2 className="headtitle">Login</h2>
+                        <Form>
+                          <div className="form">
+                            <div className="form-horizontal">
+                              <div className="form-group clearfix">
+                                <label>Email</label>
+                                <div>
                                   <Field
-                                    size="20"
-                                    name="password"
-                                    maxLength="20"
-                                    className="form-control"
+                                    name="email"
+                                    type="email"
+                                    maxLength="100"
                                     tabIndex="10"
-                                    type="password"
-                                    style={{ width: "100%" }}
+                                    className="form-control"
                                   />
-                                  {errors.password && touched.password ? (
+                                  {errors.email && touched.email ? (
                                     <div className="Invalid">
-                                      {errors.password}
+                                      {errors.email}
                                     </div>
                                   ) : (
                                     EMPTY_STRING
                                   )}
-                                </span>
+                                </div>
+                              </div>
+                              <div className="form-group clearfix">
+                                <label>Password</label>
+                                <div>
+                                  <span style={{ whiteSpace: "normal" }}>
+                                    <Field
+                                      size="20"
+                                      name="password"
+                                      maxLength="20"
+                                      className="form-control"
+                                      tabIndex="10"
+                                      type="password"
+                                      style={{ width: "100%" }}
+                                    />
+                                    {errors.password && touched.password ? (
+                                      <div className="Invalid">
+                                        {errors.password}
+                                      </div>
+                                    ) : (
+                                      EMPTY_STRING
+                                    )}
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="divBtnSignUp divLogin">
+                                <button type="submit" className="btnSignUp">
+                                  Login
+                                  <i className="fas fa-chevron-right" />
+                                </button>
                               </div>
                             </div>
-                            <div className="divBtnSignUp divLogin">
-                              <button type="submit" className="btnSignUp">
-                                Login
-                                <i className="fas fa-chevron-right" />
-                              </button>
-                            </div>
                           </div>
-                        </div>
-                      </Form>
+                        </Form>
+                      </div>
                     </div>
                   </div>
                 </div>
-                               
-                </div>
-              
-                <div >
-                  {spinner}
-                  </div>
-                {errorMessage} 
-            </section>
-          
-          </>
-        )}
+
+                <div>{spinner}</div>
+                {errorMessage}
+              </section>
+            </>
+          )}
         </Formik>
-       
       </div>
     );
   }
@@ -146,7 +145,7 @@ const mapStateToProps = state => {
     cartItems: state.shop.cart,
     cartItemCount: state.shop.cart.reduce((count, curItem) => {
       return count + curItem.quantity;
-    }, 0),
+    }, 0)
   };
 };
 

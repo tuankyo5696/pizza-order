@@ -81,7 +81,8 @@
             h2 {
                 font-weight: 700;
                 font-size: 3rem;
-                color: $gray-dark;
+                color: $white;
+                text-shadow: -2px 0 $gray-dark, 0 2px $gray-dark, 2px 0 $gray-dark, 0 -2px $gray-dark;
                 text-transform: uppercase;
                 margin-bottom: 2rem;
             }

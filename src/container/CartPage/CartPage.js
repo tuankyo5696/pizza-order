@@ -4,9 +4,12 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import "./_CartPage.scss";
 import { EMPTY_STRING } from "../../constants/helper";
+import * as actions from "./../../store/actions/index";
 class CartPage extends Component {
   purchaseHandler = e => {
     e.preventDefault();
+    this.props.onFetchOrder();
+    this.props.onPurchaseOrder()
     if (this.props.isAuthenticated) {
       localStorage.setItem("cart", JSON.stringify(this.props.cartItems));
       if (this.props.cartItemCount) {
@@ -75,8 +78,24 @@ const mapStateToProps = state => {
       return count + curItem.quantity;
     }, 0),
     totalPrice: state.shop.cart.reduce((count, curItem) => {
-      return count + curItem.prices[0].price * curItem.quantity;
+      let total = count;
+      if (curItem.category.name === "Pizzas") {
+        total = curItem.subName.price
+          ? total +
+            curItem.prices[0].price * curItem.quantity +
+            curItem.subName.price
+          : total + curItem.prices[0].price * curItem.quantity;
+      } else {
+        total = total + curItem.prices[0].price * curItem.quantity;
+      }
+      return total;
     }, 0)
   };
 };
-export default connect(mapStateToProps)(withRouter(CartPage));
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchOrder: () => dispatch(actions.fetchOrder()),
+    onPurchaseOrder: () => dispatch(actions.purchaseOrderStart())
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(CartPage));

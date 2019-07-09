@@ -59,7 +59,11 @@ const CartItems = props => {
 
           <div className="price-count">
             <span>x</span>
-            <span>{props.prices[0].price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, '$1,')}</span>
+            <span>
+              {props.prices[0].price
+                .toFixed(0)
+                .replace(/(\d)(?=(\d{3})+$)/g, "$1,")}
+            </span>
           </div>
         </div>
       </div>

@@ -4,8 +4,10 @@ import Step2 from "./FormChooseStore/FormChooseStore";
 import Step3 from "./FormPaymentInformation/FormPaymentInformation";
 import { compose, withState, withHandlers } from "recompose";
 import { connect } from "react-redux";
+import { EMPTY_STRING } from './../../../constants/helper';
 import * as actions from "./../../../store/actions/index";
 import * as Yup from "yup";
+import Spinner from './../../UI/Spinner/Spinner';
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const paymentSchema = Yup.object().shape({
   email: Yup.string()
@@ -20,6 +22,7 @@ const paymentSchema = Yup.object().shape({
     .min(2, "Too short")
     .required("Full name is required")
 });
+let redirect = EMPTY_STRING
 const enhance = compose(
   withState("step", "setStep", 1),
   withHandlers({
@@ -62,28 +65,48 @@ const enhance = compose(
         phone: values.phone,
         note: values.note ? values.note : undefined
       };
-      console.log(orderData);
-      props.onSendOrder(orderData);
-      setTimeout(() => {}, 100);
+
+      redirect = <Spinner />
+      
+      setTimeout(() => {
+        props.onSendOrder(orderData);
+        setSubmitting(false);
+      }, 100);
     },
     validationSchema: paymentSchema
   })
 );
-const FormPayment = ({ handleSubmit, step, nextStep, prevStep, ...props }) => (
-  <form onSubmit={handleSubmit}>
+const FormPayment = ({ handleSubmit, step, nextStep, prevStep, ...props }) => {
+  if ( props.purchase) {
+    alert('Order Successfully')
+    props.onRemoveCart()
+    redirect = EMPTY_STRING
+  }
+  return (
+    <>
+      
+    <form onSubmit={handleSubmit}>
     {{
       1: <Step2 nextStep={nextStep} prevStep={prevStep} {...props} />,
       2: <Step3 prevStep={prevStep} {...props} />
     }[step] || <div />}
-  </form>
-);
+      </form>
+      {redirect}
+      </>
+  )
+}
+
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    purchase: state.orders.purchased,
+    order: state.orders.orders
+  };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onSendOrder: orderData => dispatch(actions.purchaseOrder(orderData))
+    onSendOrder: orderData => dispatch(actions.purchaseOrder(orderData)),
+    onRemoveCart: () => dispatch(actions.removeAllCart())
   };
 };
 export default connect(

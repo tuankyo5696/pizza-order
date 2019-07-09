@@ -4,7 +4,7 @@ import FormPayment from "./FormPayment/FormPayment";
 import { EMPTY_STRING } from "../../constants/helper";
 
 const payment = props => {
-  let cart = []
+  let cart = [];
   if (props.cart) {
     props.cart.map((item, index) => {
       cart.push({
@@ -12,32 +12,37 @@ const payment = props => {
         unitPrice: item.prices[0]._id,
         quantity: item.quantity,
         options: item.category.name === "Pizzas" ? item.options : undefined,
-        wrapper:  item.category.name === "Pizzas" ? item.wrapper : undefined
-      })
+        wrapper: item.category.name === "Pizzas" ? item.wrapper : undefined
+      });
       return cart;
-    })
+    });
   }
+  const {email,name,note,shippingAddress,phone} = props.orders ? props.orders : EMPTY_STRING
   return (
     <div className="payment">
-    <FormPayment form={{
-       houseNumber: EMPTY_STRING,
-       district: EMPTY_STRING ,
-       province: EMPTY_STRING,
-       fullname: EMPTY_STRING,
-       shippingAddress: EMPTY_STRING,
-        orderLines: cart,
-       idAddress: localStorage.getItem('idShipDelievery') ? localStorage.getItem('idShipDelievery') : EMPTY_STRING,
-       phone: EMPTY_STRING,
-       email: EMPTY_STRING,
-       note: EMPTY_STRING,
-        orderMethod: 'DELIVERY',
-       informationGuide: EMPTY_STRING,
-       paymentMethod: {
-         type: 'COD'
-       }
-    }} />
-  </div>
-  )
-}
+      <FormPayment
+        form={{
+          houseNumber: shippingAddress ?shippingAddress.houseNumber : EMPTY_STRING ,
+          district: shippingAddress ? shippingAddress.district : EMPTY_STRING ,
+          province: shippingAddress? shippingAddress.province : EMPTY_STRING,
+          fullname: name ? name : EMPTY_STRING,
+          shippingAddress: shippingAddress? shippingAddress.street : EMPTY_STRING,
+          orderLines: cart,
+          idAddress: localStorage.getItem("idShipDelievery")
+            ? localStorage.getItem("idShipDelievery")
+            : EMPTY_STRING,
+          phone: phone ? phone : EMPTY_STRING,
+          email: email ? email : EMPTY_STRING,
+          note: note ? note: EMPTY_STRING,
+          orderMethod: "DELIVERY",
+          informationGuide: EMPTY_STRING,
+          paymentMethod: {
+            type: "CASH"
+          }
+        }}
+      />
+    </div>
+  );
+};
 
 export default payment;

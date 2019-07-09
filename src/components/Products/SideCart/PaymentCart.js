@@ -1,10 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import CartItem from "./../../../components/Cart/CartItem";
 import "./_SideCart.scss";
-const sidecart = props => (
-  <div className="col-lg-4 col-xl-3 Module Module-310">
+const paymentCart = props => (
+  <div className="col-lg-12 col-xl-12 Module Module-310">
     <div className="ModuleContent">
       <div className="Side-cart">
         <div className="Side-cart-title" />
@@ -25,18 +24,13 @@ const sidecart = props => (
             <span className="fas fa-shopping-bag" />
           </div>
           <div className="total-text">
-            <p>Total:</p>
+            <p style ={{paddingLeft : '20px'}}>Total:</p>
           </div>
           <div className="total">
             <strong>
               {props.totalPrice.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1,")}{" "}
               ₫
             </strong>
-          </div>
-          <div className="button-checkout">
-            <NavLink to={`/cart`} className="btn btn-checkout">
-              Checkout
-            </NavLink>
           </div>
         </div>
       </div>
@@ -64,4 +58,4 @@ const mapStateToProps = state => {
     }, 0)
   };
 };
-export default connect(mapStateToProps)(sidecart);
+export default connect(mapStateToProps)(paymentCart);

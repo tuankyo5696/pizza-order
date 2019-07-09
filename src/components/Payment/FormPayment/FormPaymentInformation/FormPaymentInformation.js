@@ -5,13 +5,14 @@ import Pay1 from "./../../../../assets/images/pay1.png";
 import Pay2 from "./../../../../assets/images/pay2.png";
 import Pay3 from "./../../../../assets/images/pay3.png";
 import Pay4 from "./../../../../assets/images/pay4.png";
-import {Field} from 'formik'
+import PaymentCart from "./../../../Products/SideCart/PaymentCart";
+import { Field } from "formik";
 import { EMPTY_STRING } from "../../../../constants/helper";
 const Step3 = props => {
   const getBack = e => {
-    e.preventDefault()
+    e.preventDefault();
     props.prevStep();
-  }
+  };
   return (
     <div>
       <Navbar active1={false} active2={false} active3={true} />
@@ -35,12 +36,14 @@ const Step3 = props => {
                           className="form-control"
                           type="text"
                           name="fullname"
-                          value = {props.values.fullname}
+                          value={props.values.fullname}
                           placeholder="Enter Fullname"
                         />
-                           {props.errors.fullname && props.touched.fullname ? (
-                                  <div className="Invalid">{props.errors.fullname}</div>
-                                ) : EMPTY_STRING}
+                        {props.errors.fullname && props.touched.fullname ? (
+                          <div className="Invalid">{props.errors.fullname}</div>
+                        ) : (
+                          EMPTY_STRING
+                        )}
                       </div>
                       <div className="EmailPhone">
                         <div className="form-group col-6">
@@ -49,12 +52,14 @@ const Step3 = props => {
                             type="email"
                             className="form-control"
                             name="email"
-                            value = {props.values.email}
+                            value={props.values.email}
                             placeholder="Enter Email"
                           />
-                           {props.errors.email && props.touched.email ? (
-                                  <div className="Invalid">{props.errors.email}</div>
-                                ) : EMPTY_STRING}
+                          {props.errors.email && props.touched.email ? (
+                            <div className="Invalid">{props.errors.email}</div>
+                          ) : (
+                            EMPTY_STRING
+                          )}
                         </div>
 
                         <div className="form-group col-6">
@@ -64,32 +69,34 @@ const Step3 = props => {
                             className="form-control"
                             type="text"
                             name="phone"
-                            value = {props.values.phone}
+                            value={props.values.phone}
                             placeholder="Enter PhoneNumber"
                           />
-                             {props.errors.phone && props.touched.phone ? (
-                                  <div className="Invalid">{props.errors.phone}</div>
-                                ) : EMPTY_STRING}
+                          {props.errors.phone && props.touched.phone ? (
+                            <div className="Invalid">{props.errors.phone}</div>
+                          ) : (
+                            EMPTY_STRING
+                          )}
                         </div>
                       </div>
 
                       <div className="form-group col-12">
                         <label>Order Note</label>
 
-                        <Field 
-                          component= "textarea"
+                        <Field
+                          component="textarea"
                           className="form-control"
                           name="note"
                           cols="30"
                           rows="2"
-                          value= {props.values.note}
+                          value={props.values.note}
                         />
                       </div>
 
                       <div className="form-group col-12">
                         <label>Payment Method</label>
 
-                        <div className="pay-method">
+                        <div className="pay-method" style={{marginBottom: '20px'}}>
                           <ul className="coverMethod">
                             <li htmlFor="1" className="active">
                               <div className="img">
@@ -102,7 +109,6 @@ const Step3 = props => {
                                   name="PaymentMethod"
                                   id="1"
                                   value="1"
-                                 
                                   defaultChecked
                                 />
                               </div>
@@ -115,7 +121,7 @@ const Step3 = props => {
                                 <img alt="" src={Pay2} />
                               </div>
 
-                              <div >
+                              <div>
                                 <input
                                   type="radio"
                                   name="PaymentMethod"
@@ -133,7 +139,7 @@ const Step3 = props => {
                                 <img alt="" src={Pay3} />
                               </div>
 
-                              <div >
+                              <div>
                                 <input
                                   type="radio"
                                   name="PaymentMethod"
@@ -151,7 +157,7 @@ const Step3 = props => {
                                 <img alt="" src={Pay4} />
                               </div>
 
-                              <div >
+                              <div>
                                 <input
                                   type="radio"
                                   name="PaymentMethod"
@@ -165,7 +171,10 @@ const Step3 = props => {
                             </li>
                           </ul>
                         </div>
-
+                        <div className="form-group col-12">
+                        <PaymentCart />     
+                        </div>
+                          
                         <div className="accept-license">
                           <input
                             id="PaymentAgree"
@@ -173,33 +182,39 @@ const Step3 = props => {
                             defaultChecked
                             name="PaymentAgree"
                           />
-
+                           
                           <label htmlFor="PaymentAgree" className="active">
                             I have read and agree to the above terms
                           </label>
                         </div>
-
+                        
                         <div className="desc">
                           <p>Thank you for ordering at Pyco's Pizza Vietnam.</p>
                         </div>
+                       
+                          
+                    
                         <div className="form-group col-12">
-                        <a
-                        className="btn btn-prev"
-                        href="/"
-                        onClick={getBack}
-                      >
-                        Go Back
-                      </a>
-                          <button
-                            className="btn-book btn btn-next"
+                        <button
+                            className="btn btn-next"
                             type="submit"
+                            style = {{width: '100%'}}
                           >
                             CheckOut Completed
                           </button>
+                          <a
+                            className="btn btn-prev"
+                            href="/"
+                            onClick={getBack}
+                          >
+                            Go Back
+                          </a>
+                          
                         </div>
                       </div>
                     </div>
                   </div>
+                 
                 </div>
               </div>
             </div>

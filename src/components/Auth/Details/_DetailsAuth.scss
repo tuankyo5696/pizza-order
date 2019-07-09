@@ -1,0 +1,70 @@
+@import './../../../styles/styles.scss';
+.userinfo {
+    padding: 6rem 0 0;
+    margin-bottom: 1rem;
+    display: flex;
+    //width: 100vw;
+    justify-content: space-evenly;
+    figure {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #999999 url(./../../../assets/images/people-icon.png) center center no-repeat;
+        background-size: cover;
+        border-radius: 5px;
+        padding: 15px;
+        flex-direction: column;
+        img {
+            transform: translateY(-80%);
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+        }
+    }
+    figcaption {
+        text-align: center;
+        .title {
+            font-size: 0.875rem;
+            color: black;
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+        .user-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: gray;
+        }
+    }
+}
+.clearfix::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.user-sidelink ul {
+    overflow: hidden;
+    li {
+        display: block;
+        margin-bottom: 10px;
+        a {
+            display: block;
+            background: #033a56;
+            color: #ffffff;
+            padding: 13px 20px;
+        }
+    }
+}
+
+@media (min-width:$breakpoint-md) {
+    .userinfo {
+        padding: 10rem 0 0;
+    }
+}

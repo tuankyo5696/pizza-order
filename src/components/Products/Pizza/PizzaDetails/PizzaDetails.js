@@ -23,9 +23,8 @@ class PizzaDetails extends Component {
     });
   };
   purchaseHandler = () => {
-    this.props.onAddCart(this.state.pizza);
-    this.props.cancel();
-  }
+    
+  };
   render() {
     const choosePizzaSize = this.props.pizza.prices.map(price => (
       <Field
@@ -79,11 +78,11 @@ class PizzaDetails extends Component {
           const size = sizePrice.size === "Medium - 9 inch" ? '9"' : '12"';
           if (values.radioGroup3 !== EMPTY_STRING) {
             const topping = JSON.parse(values.radioGroup3);
-            checkPrice = checkPrice + topping.price
+            checkPrice = checkPrice + topping.price;
             subName = topping;
-            options = topping
+            options = topping;
           }
-          
+
           this.setState({
             totalPrice: totalPrice,
             checkPrice: checkPrice,
@@ -94,16 +93,18 @@ class PizzaDetails extends Component {
               category: this.props.pizza.category,
               picture: this.props.pizza.picture,
               wrapper: values.radioGroup2,
-              options : options ? [options._id]  : undefined,
+              options: options ? [options._id] : undefined,
               prices: [
                 {
-                  _id : sizePrice._id,
+                  _id: sizePrice._id,
                   price: totalPrice
                 }
               ]
             },
             purchase: true
           });
+          this.props.onAddCart(this.state.pizza);
+          this.props.cancel();
         }}
         render={({
           handleSubmit,
@@ -125,8 +126,12 @@ class PizzaDetails extends Component {
                   <img src={this.props.pizza.picture} alt={EMPTY_STRING} />
                   <p className="price product-price">
                     {this.state.checkPrice > 0
-                      ? this.state.checkPrice.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, '$1,')+"₫"
-                      : this.props.pizza.prices[0].price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, '$1,')+"₫"}
+                      ? this.state.checkPrice
+                          .toFixed(0)
+                          .replace(/(\d)(?=(\d{3})+$)/g, "$1,") + "₫"
+                      : this.props.pizza.prices[0].price
+                          .toFixed(0)
+                          .replace(/(\d)(?=(\d{3})+$)/g, "$1,") + "₫"}
                   </p>
                 </div>
                 <div className="option-list popup-option">
@@ -159,14 +164,6 @@ class PizzaDetails extends Component {
                       {chooseTopping}
                     </RadioButtonGroup>
                     <button type="submit" className="btn btn-continue addcart">
-                      Check Prices
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-continue addcart"
-                      onClick={this.purchaseHandler}
-                      disabled={!this.state.purchase ? true : false}
-                    >
                       Add to Cart
                     </button>
                   </div>
