@@ -76,6 +76,7 @@ class PizzaDetails extends Component {
           totalPrice = totalPrice + sizePrice.price;
           checkPrice = checkPrice + sizePrice.price;
           const size = sizePrice.size === "Medium - 9 inch" ? '9"' : '12"';
+          const wrap = values.radioGroup2;
           if (values.radioGroup3 !== EMPTY_STRING) {
             const topping = JSON.parse(values.radioGroup3);
             checkPrice = checkPrice + topping.price;
@@ -87,7 +88,7 @@ class PizzaDetails extends Component {
             totalPrice: totalPrice,
             checkPrice: checkPrice,
             pizza: {
-              name: size + this.props.pizza.name,
+              name: size + this.props.pizza.name +" " + wrap,
               subName: subName,
               _id: this.props.pizza._id,
               category: this.props.pizza.category,
@@ -124,15 +125,6 @@ class PizzaDetails extends Component {
                   <h4>{this.props.pizza.name}</h4>
                   <p>{this.props.pizza.description}</p>
                   <img src={this.props.pizza.picture} alt={EMPTY_STRING} />
-                  <p className="price product-price">
-                    {this.state.checkPrice > 0
-                      ? this.state.checkPrice
-                          .toFixed(0)
-                          .replace(/(\d)(?=(\d{3})+$)/g, "$1,") + "₫"
-                      : this.props.pizza.prices[0].price
-                          .toFixed(0)
-                          .replace(/(\d)(?=(\d{3})+$)/g, "$1,") + "₫"}
-                  </p>
                 </div>
                 <div className="option-list popup-option">
                   <div className="product-option">

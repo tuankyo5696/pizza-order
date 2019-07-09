@@ -70,7 +70,8 @@ const CartItems = props => {
 
       <div className="option-group">
         <h4 className="product-name">{subItem.name}</h4>
-        <div className="product-price">{subItem.price}</div>
+        <div className="product-price">{subItem ?subItem.price.toFixed(0)
+                .replace(/(\d)(?=(\d{3})+$)/g, "$1,"): EMPTY_STRING }</div>
       </div>
       <div className="btn-wrap">
         <a href="/" className="btn-remove" onClick={removeItem}>

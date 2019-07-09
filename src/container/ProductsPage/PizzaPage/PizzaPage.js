@@ -6,8 +6,6 @@ import Spinner from "./../../../components/UI/Spinner/Spinner";
 import Navbar from "./../../../components/Products/Navbar/Navbar";
 import Banner from "./../../../components/Products/Banner/Banner";
 import SideCart from "./../../../components/Products/SideCart/SideCart";
-import BigIcon from "./../../../assets/images/big.png";
-import MediumIcon from "./../../../assets/images/medium.png";
 import "./_PizzaPage.scss";
 class PizzaPage extends Component {
   componentDidMount() {
@@ -32,20 +30,6 @@ class PizzaPage extends Component {
                   <div className="menu-row">
                     <div className="menu-header">
                       <h2>Pizza</h2>
-                      <ul>
-                        <li>
-                          <img src={BigIcon} alt="" />
-                          <span className="price-large">
-                            Large :<strong> 299.000 </strong>
-                          </span>
-                        </li>
-                        <li>
-                          <img src={MediumIcon} alt="" />
-                          <span className="price-medium">
-                            Medium :<strong> 199.000 </strong>
-                          </span>
-                        </li>
-                      </ul>
                     </div>
                     <div className="menu-content">
                       <div className="row no-gutters">{pizzas}</div>
