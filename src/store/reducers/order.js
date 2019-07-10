@@ -16,12 +16,10 @@ const fetchOrderFailed = (state, action) => {
 };
   
 const fetchOrderSuccess = (state, action) => {
-    console.log(action.orders)
     const object = updateObject(state, {
         orders: action.orders,
       loading: false
     });
-    console.log(object);
     return object;
 };
 const purchaseOrderStart = ( state, action ) => {
@@ -31,14 +29,12 @@ const purchaseOrderFailed = (state,action) => {
     return updateObject(state,{loading : false})
 }
 const purchaseOrderSuccess = (state, action) => {
-    console.log(action.orderData)
     const newOrder = updateObject( action.orderData, { id: action.orderId } );
     const object = updateObject( state, {
         loading: false,
         purchased: true,
         orders: state.orders.concat( newOrder )
     });
-    console.log(object)
     return object
 }
 const reducer = (state = initialState, action) => {

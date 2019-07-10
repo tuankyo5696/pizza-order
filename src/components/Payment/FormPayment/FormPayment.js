@@ -33,7 +33,8 @@ const enhance = compose(
     nextStep: ({ setStep, step }) => () => setStep(step + 1),
     prevStep: ({ setStep, step }) => () => setStep(step - 1)
     }),
-    withFormik({
+  withFormik({
+    enableReinitialize: true,
         mapPropsToValues: ({
           form: {orderMethod,paymentMethod, houseNumber, fullname, district, province,informationGuide, phone,shippingAddress,email,note,orderLines,idAddress}
       }) => ({
@@ -63,7 +64,6 @@ const enhance = compose(
           note: values.note ?  values.note : undefined
         }
         redirect = <Spinner />
-        console.log(orderData)
           setTimeout(() => {
             props.onSendOrder(orderData);
             setSubmitting(false);

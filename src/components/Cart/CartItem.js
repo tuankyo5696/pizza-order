@@ -13,7 +13,6 @@ const CartItems = props => {
   const incrementQuantity = e => {
     e.preventDefault();
     const value = itemQuantity;
-    console.log(value);
     if (value < 10) {
       setItemQuantity(itemQuantity + 1);
       props.dispatch(actions.incrementCartQuantity(props._id));
@@ -22,7 +21,6 @@ const CartItems = props => {
   const decrementQuantity = e => {
     e.preventDefault();
     const value = itemQuantity;
-    console.log(value);
     if (value > 1) {
       setItemQuantity(itemQuantity - 1);
       props.dispatch(actions.decrementCartQuantity(props._id));
@@ -70,7 +68,7 @@ const CartItems = props => {
 
       <div className="option-group">
         <h4 className="product-name">{subItem.name}</h4>
-        <div className="product-price">{subItem ?subItem.price.toFixed(0)
+        <div className="product-price">{subItem && subItem.price >0  ?subItem.price.toFixed(0)
                 .replace(/(\d)(?=(\d{3})+$)/g, "$1,"): EMPTY_STRING }</div>
       </div>
       <div className="btn-wrap">

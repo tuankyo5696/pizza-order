@@ -187,11 +187,6 @@ const Step3 = props => {
                             I have read and agree to the above terms
                           </label>
                         </div>
-                        
-                        <div className="desc">
-                          <p>Thank you for ordering at Pyco's Pizza Vietnam.</p>
-                        </div>
-                       
                           
                     
                         <div className="form-group col-12">

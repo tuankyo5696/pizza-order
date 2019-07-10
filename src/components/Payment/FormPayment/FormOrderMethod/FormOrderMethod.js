@@ -7,6 +7,7 @@ import "./_FormOrderMethod.scss";
 const Step1 = props => {
   const getNext = e => {
     e.preventDefault();
+    
     props.nextStep();
   };
   const getNext2 = e => {

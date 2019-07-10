@@ -9,12 +9,12 @@ const navigationUser = props => (
   <div className="user">
     <img src={User} alt="user" />
     {props.isAuthenticated ? (
+      <NavLink to = {`auth-details`}>
       <div className="account">
         {" "}
-
-        
         {props.user.firstname ? props.user.firstname + " " + props.user.lastname: EMPTY_STRING}{" "}
-      </div>
+        </div>
+        </NavLink>
     ) : (
       <ul className="sign-in">
         <li>

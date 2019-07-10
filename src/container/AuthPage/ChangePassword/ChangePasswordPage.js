@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import ChangePassword from './../../../components/Auth/Details/ChangePassword/ChangePassword'
+import ChangePasswordAuth from './../../../components/Auth/Details/ChangePasswordAuth';
 
 class ChangePasswordPage extends Component {
   render() {
     return (
       <div>
-        <ChangePassword/>
+        <ChangePasswordAuth/>
       </div>
     );
   }

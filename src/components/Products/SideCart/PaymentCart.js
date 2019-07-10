@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import CartItem from "./../../../components/Cart/CartItem";
 import "./_SideCart.scss";
 const paymentCart = props => (
-  <div className="col-lg-12 col-xl-12 Module Module-310">
+  <div className="col-lg-12 col-xl-12 Module Module-310" style ={{padding: '0'}}>
     <div className="ModuleContent">
       <div className="Side-cart">
         <div className="Side-cart-title" />

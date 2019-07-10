@@ -54,6 +54,7 @@ class CartPage extends Component {
                   </div>
                   <div className="button-checkout">
                     <a
+                      style = {{width: "100px"}}
                       className="btn btn-checkout"
                       href="/"
                       onClick={this.purchaseHandler}

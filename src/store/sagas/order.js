@@ -11,7 +11,6 @@ export function* purchaseOrderSaga(action) {
       action.orderData,
       { headers: { Authorization: `Bearer ${tokenStr}` } }
     );
-    console.log(response)
     yield put(
       actions.purchaseOrderSuccess(response.data.orderInfo.id, action.orderData)
     );

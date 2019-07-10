@@ -4,7 +4,7 @@ import { EMPTY_STRING } from "./../../../constants/helper";
 import * as Yup from "yup";
 import "./_Signin.scss";
 import { connect } from "react-redux";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter, Redirect, NavLink } from "react-router-dom";
 import * as actions from "./../../../store/actions/index";
 import Spinner from "./../../../components/UI/Spinner/Spinner";
 
@@ -120,6 +120,25 @@ class SignIn extends Component {
                             </div>
                           </div>
                         </Form>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            position: "relative",
+                            bottom: "50px"
+                          }}
+                        >
+                          <NavLink
+                            to={`/register`}
+                            style={{
+                              color: "#04354c",
+                              fontWeight: "700",
+                              textTransform: "uppercase"
+                            }}
+                          >
+                            Register
+                          </NavLink>
+                        </div>
                       </div>
                     </div>
                   </div>

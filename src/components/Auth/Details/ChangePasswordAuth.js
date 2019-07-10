@@ -2,12 +2,11 @@ import React from "react";
 import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import "./_DetailsAuth.scss";
-import DetailsInformation from './DetailsInformation/DetailsInformation';
+import ChangePassword from './../Details/ChangePassword/ChangePassword';
 
-const DetailsAuth = props => (
+const ChangePasswordAuth = props => (
     <div className="container">
         <div className="row flex flex-wrap" style= {{display: 'flex'}}>
-        
         <div className="col-xs-12 col-lg-3">
         <section className="user-sidebar clearfix">
             <div className="userinfo clearfix">
@@ -33,7 +32,7 @@ const DetailsAuth = props => (
         </nav>
         </div>
         <div className="col-12 col-lg-9">
-        <DetailsInformation />
+        <ChangePassword />
         </div>
       </div>
     </div>
@@ -43,5 +42,4 @@ const mapStateToProps = state => {
         user: state.auth.userData,
     }
 }
-
-export default  connect(mapStateToProps)(DetailsAuth);
+export default connect(mapStateToProps)(ChangePasswordAuth);

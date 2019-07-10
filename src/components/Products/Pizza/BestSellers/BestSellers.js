@@ -18,10 +18,10 @@ class BestSellers extends Component {
           price: this.props.prices[0].price
         }
       ],
-      subName: {
-        name: EMPTY_STRING,
-        price: EMPTY_STRING
-      }
+        subName: {
+          name: EMPTY_STRING,
+          price: 0
+        }
     }
   };
   addCart = e => {
@@ -38,7 +38,7 @@ class BestSellers extends Component {
             </div>
             <figcaption className="figcaption">
               <h4 style={{ fontSize: "8px" }}>{this.props.name}</h4>
-              <p className="price"> {this.props.prices[0].price}</p>
+              <p className="price"> {this.props.prices[0].price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1,") + "₫"}</p>
               <div className="btn-addcart">
                 Add To Cart
                 <span className="lnr lnr-arrow-right" />

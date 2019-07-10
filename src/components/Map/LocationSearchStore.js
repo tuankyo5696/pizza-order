@@ -91,6 +91,7 @@ class LocationSearchStore extends Component {
                     className="btn-book btn btn-next"
                     href="/"
                     onClick={this.props.next}
+                    style= {{marginTop: '14px '}}
                   >
                     Order
                   </a>
