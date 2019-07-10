@@ -14,23 +14,21 @@ class Step2 extends Component {
     ProvinceHN: HANOI,
     houseNumber: EMPTY_STRING,
     district: EMPTY_STRING,
-    province: EMPTY_STRING
+    province: EMPTY_STRING,
+    isHoveringHouseNumber: false,
+    isHoveringStreet: false,
+    isHoveringInfo: false
   };
-  showInfoHouseNumber = () => {
-    this.setState({
-      infoHouseNumber: !this.state.infoHouseNumber
-    });
-  };
-  showInfoStreet = () => {
-    this.setState({
-      infoStreet: !this.state.infoStreet
-    });
-  };
-  showInfoGuide = () => {
-    this.setState({
-      infoGuide: !this.state.infoGuide
-    });
-  };
+  handleMouseHoverHouseNumber =() => {
+    this.setState({isHoveringHouseNumber : !this.state.isHoveringHouseNumber});
+  }
+  handleMouseHoverStreet = () => {
+    this.setState({ isHoveringStreet : !this.state.isHoveringStreet})
+  }
+  handleMouseHoverInfo = () => {
+    this.setState({isHoveringInfo: !this.state.isHoveringInfo})
+  }
+
   getBack = e => {
     e.preventDefault();
     this.props.prevStep();
@@ -43,7 +41,7 @@ class Step2 extends Component {
       street: this.props.values.shippingAddress,
       dictrict: this.props.values.district,
       province: this.props.values.province,
-      informationGuider: this.props.values.informationGuider
+      informationGuider: this.props.values.informationGuide
     };
     let tokenStr = localStorage.getItem("JWTtoken");
     axios
@@ -139,38 +137,37 @@ class Step2 extends Component {
                   </div>
                   <div className="col-12 form-group">
                     <label>
+                      {" "}
                       House Number<span className="star">(*)</span>
-                    </label>
-                    <div onClick={this.showInfoHouseNumber}>
-                      {this.state.infoHouseNumber ? (
-                        <div className="desc">
-                          <p>
-                            {" "}
-                            Enter the house number before selecting a road.{" "}
-                          </p>
-                          <p>
-                            {" "}
-                            Enter only the number, part or alley, please fill in
-                            the Information box below.{" "}
-                          </p>
-                          <p> Example: 12Bis / 34E, how to fill: </p>
-                          <p> - House number: 12 </p>
-                          <p> - Instruction information box: 12Bis / 34E </p>
-                        </div>
-                      ) : (
+                      <div className= "tooltip"
+                       style={{ position : 'relative',right: '100%'}}
+                        
+                      >
                         <span>
-                          <i className="fas fa-info-circle" />
+                        <i className="fas fa-info-circle" />  
                         </span>
-                      )}
-                    </div>
-
+                        <span className="tooltiptext" >
+                        <p>
+                           {" "}
+                           Enter the house number before selecting a road.{" "}
+                         </p>
+                         <p>
+                           {" "}
+                           Enter only the number, part or alley, please fill in
+                           the Information box below.{" "}
+                         </p>
+                         <p> Example: 12Bis / 34E, how to fill: </p>
+                         <p> - House number: 12 </p>
+                         <p> - Instruction information box: 12Bis / 34E </p>
+                        </span>
+                     
+                      </div>
+                    </label>
                     <Field
                       className="form-control"
                       type="text"
                       name="houseNumber"
                       value={values.houseNumber}
-
-                      // touched = {touched.houseNumber}
                     />
                     {errors.houseNumber && touched.houseNumber ? (
                       <div className="Invalid">{errors.houseNumber}</div>
@@ -180,23 +177,22 @@ class Step2 extends Component {
                     <div className="col-12 form-group">
                       <label>
                         Street<span className="star">(*)</span>
-                      </label>
-                      <div onClick={this.showInfoStreet}>
-                        {this.state.infoStreet ? (
-                          <div className="desc">
-                            <p>
-                              Please enter the unsigned street name and select
-                              the road name from the suggestion. If no street
-                              name is found, your address is outside our
-                              delivery area.
-                            </p>
-                          </div>
-                        ) : (
-                          <span>
-                            <i className="fas fa-info-circle" />
-                          </span>
-                        )}
+                        <div className= "tooltip"
+                       style={{ position : 'relative',right: '105%'}}
+                      >
+                        <span  >
+                        <i className="fas fa-info-circle" />  
+                        </span>
+                        <span className="tooltiptext"> <p>
+                          Please enter the unsigned street name and select
+                          the road name from the suggestion. If no street
+                          name is found, your address is outside our
+                          delivery area.
+                        </p></span>
+                      
                       </div>
+                      </label>
+        
 
                       <select
                         className="form-control"
@@ -209,21 +205,24 @@ class Step2 extends Component {
                       </select>
                     </div>
                     <div className="col-12 form-group">
-                      <label>Information Guide</label>
-                      <div onClick={this.showInfoGuide}>
-                        {this.state.infoGuide ? (
-                          <div className="desc">
-                            <p>
+                      <label>
+                        Information Guide
+                        <div
+                          className= "tooltip"
+                        style={{ position : 'relative', right: '102%'}}
+                      >
+                        <span>
+                        <i className="fas fa-info-circle" />  
+                        </span>
+                          <span className="tooltiptext">
+                          <p>
                               Please enter the full number of lane, alley / lot,
                               floor (apartment)
                             </p>
-                          </div>
-                        ) : (
-                          <span>
-                            <i className="fas fa-info-circle" />
-                          </span>
-                        )}
+                        </span>
+                  
                       </div>
+                      </label>
 
                       <Field
                         className="form-control"

@@ -68,3 +68,18 @@ img {
         padding: 10rem 0 0;
     }
 }
+@media (min-width:$breakpoint-lg){
+    
+    .col-lg-3 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .col-lg-9 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 75%;
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+}

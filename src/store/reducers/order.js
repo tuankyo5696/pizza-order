@@ -29,14 +29,12 @@ const purchaseOrderFailed = (state,action) => {
     return updateObject(state,{loading : false})
 }
 const purchaseOrderSuccess = (state, action) => {
-    console.log(action.orderData)
     const newOrder = updateObject( action.orderData, { id: action.orderId } );
     const object = updateObject( state, {
         loading: false,
         purchased: true,
         orders: state.orders.concat( newOrder )
     });
-    console.log(object)
     return object
 }
 const reducer = (state = initialState, action) => {

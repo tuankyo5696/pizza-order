@@ -29,7 +29,7 @@ const paymentStore = props => {
           note: note ? note: EMPTY_STRING,
           orderMethod: "CARRYOUT",
           paymentMethod: {
-            type: "COD"
+            type: "CASH"
           }
         }}
       />

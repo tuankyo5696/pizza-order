@@ -4,17 +4,11 @@ import { EMPTY_STRING } from "../../constants/helper";
 import "./_Contact.scss";
 class LocationSearchInput extends React.Component {
   state = {
-    address: localStorage.getItem("address")
+    address: localStorage.getItem("address") ? localStorage.getItem("address"): "Select Store"
       ? localStorage.getItem("address")
       : EMPTY_STRING,
     suggestion: [
-      {
-        name: "Select Store",
-        latLng: {
-          lat: 10.8020047,
-          lng: 106.6413804
-        }
-      },
+      
       {
         name: "203 Nguyễn Văn Tạo, Nhà Bè, Hồ Chí Minh, Việt Nam",
         latLng: {
@@ -63,22 +57,25 @@ class LocationSearchInput extends React.Component {
     ));
     const optionStore = (
       <section className="vhs-shop-list">
-        <h2>Pyco's Store</h2>
+        <h2>Pyco's Stores</h2>
 
         <div className="Block-content">
           <div className="Block-shop-list-nav">
             <div className="form">
               <div className="form-group">
-                <h3>Store</h3>
+                <h3>Stores</h3>
                 <select
                   className="form-control custom-select"
                   onChange={this.handleChange}
                 >
+                  <option value="">{this.state.address}</option>
                   {renderSuggestion}
                 </select>
-                <label className="active">
-                  <span>{this.state.address}</span>
-                </label>
+                {this.state.address ?
+                  <label className="active">
+                    <span>{this.state.address}</span>
+                  </label> : EMPTY_STRING
+                }
               </div>
             </div>
           </div>

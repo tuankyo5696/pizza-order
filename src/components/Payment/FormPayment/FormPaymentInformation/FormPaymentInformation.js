@@ -96,7 +96,7 @@ const Step3 = props => {
                       <div className="form-group col-12">
                         <label>Payment Method</label>
 
-                        <div className="pay-method">
+                        <div className="pay-method" style={{marginBottom: '20px'}}>
                           <ul className="coverMethod">
                             <li htmlFor="1" className="active">
                               <div className="img">
@@ -171,7 +171,10 @@ const Step3 = props => {
                             </li>
                           </ul>
                         </div>
-
+                        <div className="form-group col-12">
+                        <PaymentCart />     
+                        </div>
+                          
                         <div className="accept-license">
                           <input
                             id="PaymentAgree"
@@ -179,22 +182,23 @@ const Step3 = props => {
                             defaultChecked
                             name="PaymentAgree"
                           />
-
+                           
                           <label htmlFor="PaymentAgree" className="active">
                             I have read and agree to the above terms
                           </label>
                         </div>
-
+                        
                         <div className="desc">
                           <p>Thank you for ordering at Pyco's Pizza Vietnam.</p>
                         </div>
                        
-                            <PaymentCart />
+                          
                     
                         <div className="form-group col-12">
                         <button
                             className="btn btn-next"
                             type="submit"
+                            style = {{width: '100%'}}
                           >
                             CheckOut Completed
                           </button>

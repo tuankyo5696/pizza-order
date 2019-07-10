@@ -37,7 +37,7 @@ const payment = props => {
           orderMethod: "DELIVERY",
           informationGuide: EMPTY_STRING,
           paymentMethod: {
-            type: "COD"
+            type: "CASH"
           }
         }}
       />

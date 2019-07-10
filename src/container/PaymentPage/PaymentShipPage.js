@@ -6,7 +6,6 @@ import * as actions from "./../../store/actions/index";
 class PaymentShipPage extends Component {
   componentDidMount() {
     this.props.onFetchOrder();
-    this.props.onPurchaseOrder()
   }
   render() {
     let paymentShip = this.props.cartItemCount ? (

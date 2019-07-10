@@ -4,7 +4,7 @@ import { EMPTY_STRING } from "./../../../constants/helper";
 import * as Yup from "yup";
 import "./_Signin.scss";
 import { connect } from "react-redux";
-import { withRouter, Redirect,NavLink } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import * as actions from "./../../../store/actions/index";
 import Spinner from "./../../../components/UI/Spinner/Spinner";
 
@@ -111,7 +111,6 @@ class SignIn extends Component {
                                   </span>
                                 </div>
                               </div>
-                              <div className="form-group clearfix"><NavLink to = {`/register`}>Do you have Account?Register?</NavLink></div>
                               <div className="divBtnSignUp divLogin">
                                 <button type="submit" className="btnSignUp">
                                   Login

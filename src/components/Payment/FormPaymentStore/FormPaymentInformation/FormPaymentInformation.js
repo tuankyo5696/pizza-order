@@ -5,6 +5,7 @@ import Pay1 from "./../../../../assets/images/pay1.png";
 import Pay2 from "./../../../../assets/images/pay2.png";
 import Pay3 from "./../../../../assets/images/pay3.png";
 import Pay4 from "./../../../../assets/images/pay4.png";
+import PaymentCart from "./../../../Products/SideCart/PaymentCart";
 import { Field } from "formik";
 import { EMPTY_STRING } from "../../../../constants/helper";
 const Step3 = props => {
@@ -95,7 +96,7 @@ const Step3 = props => {
                       <div className="form-group col-12">
                         <label>Payment Method</label>
 
-                        <div className="pay-method">
+                        <div className="pay-method" style={{marginBottom: '20px'}}>
                           <ul className="coverMethod">
                             <li htmlFor="1" className="active">
                               <div className="img">
@@ -170,7 +171,10 @@ const Step3 = props => {
                             </li>
                           </ul>
                         </div>
-
+                        <div className="form-group col-12">
+                        <PaymentCart />     
+                        </div>
+                          
                         <div className="accept-license">
                           <input
                             id="PaymentAgree"
@@ -178,16 +182,26 @@ const Step3 = props => {
                             defaultChecked
                             name="PaymentAgree"
                           />
-
+                           
                           <label htmlFor="PaymentAgree" className="active">
                             I have read and agree to the above terms
                           </label>
                         </div>
-
+                        
                         <div className="desc">
                           <p>Thank you for ordering at Pyco's Pizza Vietnam.</p>
                         </div>
+                       
+                          
+                    
                         <div className="form-group col-12">
+                        <button
+                            className="btn btn-next"
+                            type="submit"
+                            style = {{width: '100%'}}
+                          >
+                            CheckOut Completed
+                          </button>
                           <a
                             className="btn btn-prev"
                             href="/"
@@ -195,16 +209,12 @@ const Step3 = props => {
                           >
                             Go Back
                           </a>
-                          <button
-                            className="btn-book btn btn-next"
-                            type="submit"
-                          >
-                            CheckOut Completed
-                          </button>
+                          
                         </div>
                       </div>
                     </div>
                   </div>
+                 
                 </div>
               </div>
             </div>

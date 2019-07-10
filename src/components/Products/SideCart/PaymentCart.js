@@ -24,7 +24,7 @@ const paymentCart = props => (
             <span className="fas fa-shopping-bag" />
           </div>
           <div className="total-text">
-            <p>Total:</p>
+            <p style ={{paddingLeft : '20px'}}>Total:</p>
           </div>
           <div className="total">
             <strong>

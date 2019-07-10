@@ -63,7 +63,7 @@ const enhance = compose(
           note: values.note ?  values.note : undefined
         }
         redirect = <Spinner />
-      
+        console.log(orderData)
           setTimeout(() => {
             props.onSendOrder(orderData);
             setSubmitting(false);
@@ -81,7 +81,7 @@ const FormPayment = ({ handleSubmit, step, nextStep, prevStep, ...props }) => {
   }
   return (
   <>
-    {redirect}
+   
     <form onSubmit={handleSubmit}>
     {{
     1: <Step1 nextStep={nextStep} {...props} />,
@@ -89,7 +89,9 @@ const FormPayment = ({ handleSubmit, step, nextStep, prevStep, ...props }) => {
     3: <Step3 prevStep = {prevStep}{...props} />
     }[step] || <div />}
       </form>
+      {redirect}
      </>
+     
   )
 }
    
